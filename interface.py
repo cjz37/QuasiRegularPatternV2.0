@@ -23,39 +23,43 @@ root.resizable(False, False)
 
 
 class QRP:
-    def __init__(self, color_list, split_point=cmp.get_split_point(0), k_list=cmp.get_k_list(0), mag=cmp.get_mag(0),
-                 tp=0, model=0):
+    def __init__(self, color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(0), k_list=cmp.get_k_list(0),
+                 mag=cmp.get_mag(0), tp=0, mtd=0):
         self._color_list = color_list
         self._split_point = split_point
         self._k_list = k_list
         self._mag = mag
         self._tp = tp
-        self._model = model
+        self._mtd = mtd
         self._cImg = None
 
     def create(self, q, s, w, xmin, ymin):
         # 生成色彩索引
-        if 0 == self._model:
+        if 0 == self._mtd:
             color_index = cmp.build_color_index(split_point=self._split_point, k_list=self._k_list, mag=self._mag)
             h_set = mm.get_h_set(q=q, s=s, w=w, xmin=xmin, ymin=ymin, mag=self._mag)
-            self._cImg = ci.draw_image(w=w, color_index=color_index, mag=self._mag, color_list=self._color_list,
-                                       split_point=self._split_point, h_set=h_set)
-        else:
-            h_set = mm.get_h_set2(q=q, s=s, w=w, xmin=xmin, ymin=ymin, tp=self._tp)
-            self._cImg = ci.draw_image2(w=w, color_list=self._color_list, h_set=h_set)
+            self._cImg = ci.draw_image_h_set(w=w, color_index=color_index, mag=self._mag, color_list=self._color_list,
+                                             split_point=self._split_point, h_set=h_set)
+        elif 1 == self._mtd:
+            k_set = mm.get_k_set(q=q, s=s, w=w, xmin=xmin, ymin=ymin, tp=self._tp)
+            self._cImg = ci.draw_image_k_set(w=w, color_list=self._color_list, k_set=k_set)
+        elif 2 == self._mtd:
+            color_set = mm.get_color_set(q=q, s=s, w=w, xmin=xmin, ymin=ymin, tp=self._tp)
+            self._cImg = ci.draw_image_color_set(w=w, color_set=color_set)
 
     def save(self, name):
         path = 'images/save/' + name + '.png'
         cv.imwrite(path, self._cImg)
 
 
-qrp = QRP(color_list=cmp.get_color_list(0))
+qrp = QRP()
 
 
 def callback():
     print("~被调用了~")
 
 
+# 列表框1
 def cmb1event(event):
     if "图案样式1" == cmb1.get():
         print("1")
@@ -67,6 +71,7 @@ def cmb1event(event):
         print("more")
 
 
+# 列表框2
 def cmb2event(event):
     if "切割模式1" == cmb1.get():
         print("1")
@@ -141,7 +146,7 @@ def chapter2_1():
     part_label.config(text='基本图像生成')
     global qrp
     qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(0), k_list=cmp.get_k_list(0),
-              mag=cmp.get_mag(0), tp=0)
+              mag=cmp.get_mag(0), tp=0, mtd=0)
 
 
 def chapter2_2():
@@ -149,7 +154,7 @@ def chapter2_2():
     part_label.config(text='两色化处理')
     global qrp
     qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(0), k_list=cmp.get_k_list(1),
-              mag=cmp.get_mag(0), tp=0)
+              mag=cmp.get_mag(0), tp=0, mtd=0)
 
 
 def chapter3_1():
@@ -157,7 +162,7 @@ def chapter3_1():
     part_label.config(text='QB 切割方式一')
     global qrp
     qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(1), k_list=cmp.get_k_list(2),
-              mag=cmp.get_mag(1), tp=0)
+              mag=cmp.get_mag(1), tp=0, mtd=0)
 
 
 def chapter3_2():
@@ -165,21 +170,21 @@ def chapter3_2():
     part_label.config(text='QB 切割方式二')
     global qrp
     qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(2), k_list=cmp.get_k_list(3),
-              mag=cmp.get_mag(1), tp=0)
+              mag=cmp.get_mag(1), tp=0, mtd=0)
 
 
 def chapter3_3():
     chapter_label.config(text='第三章:')
     part_label.config(text='QB 赋值方式一')
     global qrp
-    qrp = QRP(color_list=cmp.get_color_list(0), tp=0, model=1)
+    qrp = QRP(color_list=cmp.get_color_list(0), tp=0, mtd=1)
 
 
 def chapter3_4():
     chapter_label.config(text='第三章:')
     part_label.config(text='QB 赋值方式二')
     global qrp
-    qrp = QRP(color_list=cmp.get_color_list(0), tp=1, model=1)
+    qrp = QRP(color_list=cmp.get_color_list(0), tp=1, mtd=1)
 
 
 def chapter3_5():
@@ -187,13 +192,37 @@ def chapter3_5():
     part_label.config(text='QB 赋值方式三')
     global qrp
     qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(3), k_list=cmp.random_k_list(),
-              mag=cmp.get_mag(1))
+              mag=cmp.get_mag(1), tp=0, mtd=0)
 
 
 def chapter3_6():
     chapter_label.config(text='第三章:')
     part_label.config(text='RGB 控制方式一')
     global qrp
+    qrp = QRP(tp=0, mtd=2)
+
+
+def chapter3_7():
+    chapter_label.config(text='第三章:')
+    part_label.config(text='RGB 控制方式二')
+    global qrp
+    qrp = QRP(tp=1, mtd=2)
+
+
+def chapter3_8():
+    chapter_label.config(text='第三章:')
+    part_label.config(text='RGB 切割方式一')
+    global qrp
+    qrp = QRP(color_list=cmp.get_color_list(1), split_point=cmp.get_split_point(0), k_list=cmp.get_k_list(4),
+              mag=cmp.get_mag(0), tp=0, mtd=0)
+
+
+def chapter3_9():
+    chapter_label.config(text='第三章:')
+    part_label.config(text='RGB 切割方式一')
+    global qrp
+    qrp = QRP(color_list=cmp.get_color_list(2), split_point=cmp.get_split_point(0), k_list=cmp.get_k_list(4),
+              mag=cmp.get_mag(0), tp=0, mtd=0)
 
 
 # 菜单栏
@@ -209,7 +238,10 @@ chapter3menu.add_command(label="QBColor切割方式二", command=chapter3_2)
 chapter3menu.add_command(label="QBColor赋值方式一", command=chapter3_3)
 chapter3menu.add_command(label="QBColor赋值方式二", command=chapter3_4)
 chapter3menu.add_command(label="QBColor赋值方式三", command=chapter3_5)
-chapter3menu.add_command(label="RGB控制方式一未实现", command=chapter3_6)
+chapter3menu.add_command(label="RGB等高线变量控制方式一", command=chapter3_6)
+chapter3menu.add_command(label="RGB等高线变量控制方式二", command=chapter3_7)
+chapter3menu.add_command(label="RGB切割方式一", command=chapter3_8)
+chapter3menu.add_command(label="RGB切割方式二", command=chapter3_9)
 menubar.add_cascade(label="第三章", menu=chapter3menu)
 
 chapter4menu = Menu(menubar, tearoff=False)
