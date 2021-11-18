@@ -37,7 +37,7 @@ class QRP:
         # 生成色彩索引
         if 0 == self._mtd:
             color_index = cmp.build_color_index(split_point=self._split_point, k_list=self._k_list, mag=self._mag)
-            h_set = mm.get_h_set(q=q, s=s, w=w, xmin=xmin, ymin=ymin, mag=self._mag)
+            h_set = mm.get_h_set(q=q, s=s, w=w, xmin=xmin, ymin=ymin, mag=self._mag, tp=self._tp)
             self._cImg = ci.draw_image_h_set(w=w, color_index=color_index, mag=self._mag, color_list=self._color_list,
                                              split_point=self._split_point, h_set=h_set)
         elif 1 == self._mtd:
@@ -87,19 +87,23 @@ def get_value(v=0):
     for key in scales.keys():
         param[key] = scales[key]['value'].get()
 
-    paramVar.set(f"q:{param['q']}, s:{param['s']}, xmin:{param['xmin']}, ymin:{param['ymin']}")
+    paramVar.set(f"s:{param['s']}, xmin:{param['xmin']}, ymin:{param['ymin']}")
 
 
 def create():
-    q = param['q']
+    # q = param['q']
+    q = Eq.get().strip()
     s = param['s']
     w = Ew.get().strip()
     xmin = param['xmin']
     ymin = param['ymin']
-    if w:
+    if q and w:
         w = int(w)
+        q = float(q)
         if w < 0 or w > 1080:
             tip.config(text='图像大小无效')
+        elif q < 0 or q > 28:
+            tip.config(text='迭代次数无效')
         else:
             tip.config(text='')
             qrp.create(q=q, s=s, w=w, xmin=xmin, ymin=ymin)
@@ -128,6 +132,7 @@ def reset():
         elif 4 == v['pos']:
             v['value'].set(0)
     get_value()
+    tip.config(text='')
 
 
 def save():
@@ -225,6 +230,382 @@ def chapter3_9():
               mag=cmp.get_mag(0), tp=0, mtd=0)
 
 
+def chapter4_1():
+    chapter_label.config(text='第四章:')
+    part_label.config(text='浮点型q')
+    global qrp
+    qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(4), k_list=cmp.get_k_list(5),
+              mag=cmp.get_mag(1), tp=0, mtd=0)
+
+
+def chapter4_2():
+    chapter_label.config(text='第四章:')
+    part_label.config(text='参数i设计一')
+    global qrp
+    qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(0), k_list=cmp.get_k_list(0),
+              mag=cmp.get_mag(0), tp=1, mtd=0)
+
+
+def chapter4_3():
+    chapter_label.config(text='第四章:')
+    part_label.config(text='参数i设计二')
+    global qrp
+    qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(0), k_list=cmp.get_k_list(0),
+              mag=cmp.get_mag(0), tp=2, mtd=0)
+
+
+def chapter4_4():
+    chapter_label.config(text='第四章:')
+    part_label.config(text='参数i设计三')
+    global qrp
+    qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(0), k_list=cmp.get_k_list(0),
+              mag=cmp.get_mag(0), tp=3, mtd=0)
+
+
+def chapter4_5():
+    chapter_label.config(text='第四章:')
+    part_label.config(text='参数i设计四')
+    global qrp
+    qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(0), k_list=cmp.get_k_list(0),
+              mag=cmp.get_mag(0), tp=4, mtd=0)
+
+
+def chapter4_6():
+    chapter_label.config(text='第四章:')
+    part_label.config(text='其他参数设计一')
+    global qrp
+    qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(0), k_list=cmp.get_k_list(0),
+              mag=cmp.get_mag(0), tp=5, mtd=0)
+
+
+def chapter4_7():
+    chapter_label.config(text='第四章:')
+    part_label.config(text='其他参数设计二')
+    global qrp
+    qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(0), k_list=cmp.get_k_list(0),
+              mag=cmp.get_mag(0), tp=6, mtd=0)
+
+
+def chapter4_8():
+    chapter_label.config(text='第四章:')
+    part_label.config(text='其他参数设计三')
+    global qrp
+    qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(0), k_list=cmp.get_k_list(0),
+              mag=cmp.get_mag(0), tp=7, mtd=0)
+
+
+def chapter4_9():
+    chapter_label.config(text='第四章:')
+    part_label.config(text='其他参数设计四')
+    global qrp
+    qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(0), k_list=cmp.get_k_list(0),
+              mag=cmp.get_mag(0), tp=8, mtd=0)
+
+
+def chapter4_10():
+    chapter_label.config(text='第四章:')
+    part_label.config(text='其他参数设计五')
+    global qrp
+    qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(0), k_list=cmp.get_k_list(0),
+              mag=cmp.get_mag(0), tp=9, mtd=0)
+
+
+def chapter5_1():
+    chapter_label.config(text='第五章:')
+    part_label.config(text='绝对值变换')
+    global qrp
+    qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(0), k_list=cmp.get_k_list(0),
+              mag=cmp.get_mag(0), tp=10, mtd=0)
+
+
+def chapter5_2():
+    chapter_label.config(text='第五章:')
+    part_label.config(text='局部绝对值变换')
+    global qrp
+    qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(0), k_list=cmp.get_k_list(0),
+              mag=cmp.get_mag(0), tp=11, mtd=0)
+
+
+def chapter5_3():
+    chapter_label.config(text='第五章:')
+    part_label.config(text='复合绝对值变换')
+    global qrp
+    qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(0), k_list=cmp.get_k_list(0),
+              mag=cmp.get_mag(0), tp=12, mtd=0)
+
+
+def chapter5_4():
+    chapter_label.config(text='第五章:')
+    part_label.config(text='结合参数绝对值')
+    global qrp
+    qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(0), k_list=cmp.get_k_list(0),
+              mag=cmp.get_mag(0), tp=13, mtd=0)
+
+
+def chapter5_5():
+    chapter_label.config(text='第五章:')
+    part_label.config(text='整体三角变换一')
+    global qrp
+    qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(0), k_list=cmp.get_k_list(0),
+              mag=cmp.get_mag(0), tp=14, mtd=0)
+
+
+def chapter5_6():
+    chapter_label.config(text='第五章:')
+    part_label.config(text='整体三角变换二')
+    global qrp
+    qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(0), k_list=cmp.get_k_list(0),
+              mag=cmp.get_mag(0), tp=15, mtd=0)
+
+
+def chapter5_7():
+    chapter_label.config(text='第五章:')
+    part_label.config(text='整体三角变换三')
+    global qrp
+    qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(0), k_list=cmp.get_k_list(0),
+              mag=cmp.get_mag(0), tp=16, mtd=0)
+
+
+def chapter5_8():
+    chapter_label.config(text='第五章:')
+    part_label.config(text='整体三角变换四')
+    global qrp
+    qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(0), k_list=cmp.get_k_list(0),
+              mag=cmp.get_mag(0), tp=17, mtd=0)
+
+
+def chapter5_9():
+    chapter_label.config(text='第五章:')
+    part_label.config(text='整体三角变换五')
+    global qrp
+    qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(0), k_list=cmp.get_k_list(0),
+              mag=cmp.get_mag(0), tp=18, mtd=0)
+
+
+def chapter5_10():
+    chapter_label.config(text='第五章:')
+    part_label.config(text='整体三角变换六')
+    global qrp
+    qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(0), k_list=cmp.get_k_list(0),
+              mag=cmp.get_mag(0), tp=19, mtd=0)
+
+
+def chapter5_11():
+    chapter_label.config(text='第五章:')
+    part_label.config(text='整体三角变换七')
+    global qrp
+    qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(0), k_list=cmp.get_k_list(0),
+              mag=cmp.get_mag(0), tp=20, mtd=0)
+
+
+def chapter5_12():
+    chapter_label.config(text='第五章:')
+    part_label.config(text='整体三角变换八')
+    global qrp
+    qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(0), k_list=cmp.get_k_list(0),
+              mag=cmp.get_mag(0), tp=21, mtd=0)
+
+
+def chapter5_13():
+    chapter_label.config(text='第五章:')
+    part_label.config(text='局部三角变换一')
+    global qrp
+    qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(0), k_list=cmp.get_k_list(0),
+              mag=cmp.get_mag(0), tp=22, mtd=0)
+
+
+def chapter5_14():
+    chapter_label.config(text='第五章:')
+    part_label.config(text='局部三角变换二')
+    global qrp
+    qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(0), k_list=cmp.get_k_list(0),
+              mag=cmp.get_mag(0), tp=23, mtd=0)
+
+
+def chapter5_15():
+    chapter_label.config(text='第五章:')
+    part_label.config(text='局部三角变换三')
+    global qrp
+    qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(0), k_list=cmp.get_k_list(0),
+              mag=cmp.get_mag(0), tp=24, mtd=0)
+
+
+def chapter5_16():
+    chapter_label.config(text='第五章:')
+    part_label.config(text='自变量三角变换1')
+    global qrp
+    qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(0), k_list=cmp.get_k_list(0),
+              mag=cmp.get_mag(0), tp=25, mtd=0)
+
+
+def chapter5_17():
+    chapter_label.config(text='第五章:')
+    part_label.config(text='自变量三角变换2')
+    global qrp
+    qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(0), k_list=cmp.get_k_list(0),
+              mag=cmp.get_mag(0), tp=26, mtd=0)
+
+
+def chapter5_18():  # 整体局部三角变换1
+    chapter_label.config(text='第五章:')
+    part_label.config(text='复合三角变换1')
+    global qrp
+    qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(0), k_list=cmp.get_k_list(0),
+              mag=cmp.get_mag(0), tp=27, mtd=0)
+
+
+def chapter5_19():  # 整体局部三角变换2
+    chapter_label.config(text='第五章:')
+    part_label.config(text='复合三角变换2')
+    global qrp
+    qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(0), k_list=cmp.get_k_list(0),
+              mag=cmp.get_mag(0), tp=28, mtd=0)
+
+
+def chapter5_20():  # 整体自变量三角变换1
+    chapter_label.config(text='第五章:')
+    part_label.config(text='复合三角变换3')
+    global qrp
+    qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(0), k_list=cmp.get_k_list(0),
+              mag=cmp.get_mag(0), tp=29, mtd=0)
+
+
+def chapter5_21():  # 整体自变量三角变换2
+    chapter_label.config(text='第五章:')
+    part_label.config(text='复合三角变换4')
+    global qrp
+    qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(0), k_list=cmp.get_k_list(0),
+              mag=cmp.get_mag(0), tp=30, mtd=0)
+
+
+def chapter5_22():  # 局部自变量三角变换
+    chapter_label.config(text='第五章:')
+    part_label.config(text='复合三角变换5')
+    global qrp
+    qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(0), k_list=cmp.get_k_list(0),
+              mag=cmp.get_mag(0), tp=31, mtd=0)
+
+
+def chapter5_23():  # 基本模型整体幂函数变换一
+    chapter_label.config(text='第五章:')
+    part_label.config(text='整体幂函数变换1')
+    global qrp
+    qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(5), k_list=cmp.get_k_list(6),
+              mag=cmp.get_mag(0), tp=32, mtd=0)
+
+
+def chapter5_24():  # 基本模型整体幂函数变换二
+    chapter_label.config(text='第五章:')
+    part_label.config(text='整体幂函数变换2')
+    global qrp
+    qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(5), k_list=cmp.get_k_list(6),
+              mag=cmp.get_mag(0), tp=33, mtd=0)
+
+
+def chapter5_25():  # 基本模型整体幂函数变换三
+    chapter_label.config(text='第五章:')
+    part_label.config(text='整体幂函数变换3')
+    global qrp
+    qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(5), k_list=cmp.get_k_list(6),
+              mag=cmp.get_mag(0), tp=34, mtd=0)
+
+
+def chapter5_26():  # 基本模型整体幂函数变换四
+    chapter_label.config(text='第五章:')
+    part_label.config(text='整体幂函数变换4')
+    global qrp
+    qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(5), k_list=cmp.get_k_list(6),
+              mag=cmp.get_mag(0), tp=35, mtd=0)
+
+
+def chapter5_27():  # 基本模型整体幂函数变换五
+    chapter_label.config(text='第五章:')
+    part_label.config(text='整体幂函数变换5')
+    global qrp
+    qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(5), k_list=cmp.get_k_list(6),
+              mag=cmp.get_mag(0), tp=36, mtd=0)
+
+
+def chapter5_28():  # 基本模型整体幂函数变换六
+    chapter_label.config(text='第五章:')
+    part_label.config(text='整体幂函数变换6')
+    global qrp
+    qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(5), k_list=cmp.get_k_list(6),
+              mag=cmp.get_mag(0), tp=37, mtd=0)
+
+
+def chapter5_29():  # 基本模型整体幂函数变换七
+    chapter_label.config(text='第五章:')
+    part_label.config(text='整体幂函数变换7')
+    global qrp
+    qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(5), k_list=cmp.get_k_list(6),
+              mag=cmp.get_mag(0), tp=38, mtd=0)
+
+
+def chapter5_30():  # 基本模型局部幂函数变换一
+    chapter_label.config(text='第五章:')
+    part_label.config(text='局部幂函数变换1')
+    global qrp
+    qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(5), k_list=cmp.get_k_list(6),
+              mag=cmp.get_mag(0), tp=39, mtd=0)
+
+
+def chapter5_31():  # 基本模型局部幂函数变换二
+    chapter_label.config(text='第五章:')
+    part_label.config(text='局部幂函数变换2')
+    global qrp
+    qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(5), k_list=cmp.get_k_list(6),
+              mag=cmp.get_mag(0), tp=40, mtd=0)
+
+
+def chapter5_32():  # 基本模型局部幂函数变换三
+    chapter_label.config(text='第五章:')
+    part_label.config(text='局部幂函数变换3')
+    global qrp
+    qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(5), k_list=cmp.get_k_list(6),
+              mag=cmp.get_mag(0), tp=41, mtd=0)
+
+
+def chapter5_33():  # 基本模型局部幂函数变换四
+    chapter_label.config(text='第五章:')
+    part_label.config(text='局部幂函数变换4')
+    global qrp
+    qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(5), k_list=cmp.get_k_list(6),
+              mag=cmp.get_mag(0), tp=42, mtd=0)
+
+
+def chapter5_34():  # 基本模型自变量幂函数变换一
+    chapter_label.config(text='第五章:')
+    part_label.config(text='自变量幂函数1')
+    global qrp
+    qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(5), k_list=cmp.get_k_list(6),
+              mag=cmp.get_mag(0), tp=43, mtd=0)
+
+
+def chapter5_35():  # 基本模型自变量幂函数变换二
+    chapter_label.config(text='第五章:')
+    part_label.config(text='自变量幂函数2')
+    global qrp
+    qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(5), k_list=cmp.get_k_list(6),
+              mag=cmp.get_mag(0), tp=44, mtd=0)
+
+
+def chapter5_36():  # 基本模型自变量幂函数变换三
+    chapter_label.config(text='第五章:')
+    part_label.config(text='自变量幂函数3')
+    global qrp
+    qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(5), k_list=cmp.get_k_list(6),
+              mag=cmp.get_mag(0), tp=45, mtd=0)
+
+
+def chapter5_37():  # 基本模型自变量幂函数变换四
+    chapter_label.config(text='第五章:')
+    part_label.config(text='自变量幂函数4')
+    global qrp
+    qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(5), k_list=cmp.get_k_list(6),
+              mag=cmp.get_mag(0), tp=46, mtd=0)
+
+
 # 菜单栏
 menubar = Menu(root)
 chapter2menu = Menu(menubar, tearoff=False)
@@ -245,14 +626,74 @@ chapter3menu.add_command(label="RGB切割方式二", command=chapter3_9)
 menubar.add_cascade(label="第三章", menu=chapter3menu)
 
 chapter4menu = Menu(menubar, tearoff=False)
-chapter4menu.add_command(label="moudel1", command=callback)  # command=?
-chapter4menu.add_command(label="moudel2", command=callback)
-chapter4menu.add_command(label="moudel...", command=callback)
+chapter4menu.add_command(label="浮点型q", command=chapter4_1)  # command=?
+chapter4menu.add_command(label="参数i的设计一", command=chapter4_2)
+chapter4menu.add_command(label="参数i的设计二", command=chapter4_3)
+chapter4menu.add_command(label="参数i的设计三", command=chapter4_4)
+chapter4menu.add_command(label="参数i的设计四", command=chapter4_5)
+chapter4menu.add_command(label="其他参数的设计一", command=chapter4_6)
+chapter4menu.add_command(label="其他参数的设计二", command=chapter4_7)
+chapter4menu.add_command(label="其他参数的设计三", command=chapter4_8)
+chapter4menu.add_command(label="其他参数的设计四", command=chapter4_9)
+chapter4menu.add_command(label="其他参数的设计五", command=chapter4_10)
 menubar.add_cascade(label="第四章", menu=chapter4menu)
 
 chapter5menu = Menu(menubar, tearoff=False)
-chapter5menu.add_command(label="moudel1", command=callback)  # command=?
-chapter5menu.add_command(label="moudel2", command=callback)
+chapter5menu.add_command(label="基本模型的绝对值函数变换", command=chapter5_1)  # command=?
+chapter5menu.add_command(label="基本模型的局部绝对值函数变换", command=chapter5_2)
+chapter5menu.add_command(label="基本模型的复合绝对值函数变换", command=chapter5_3)
+chapter5menu.add_command(label="结合参数变化的绝对值函数变化", command=chapter5_4)
+chapter5menu.add_command(label="基本模型整体三角变换一", command=chapter5_5)
+chapter5menu.add_command(label="基本模型整体三角变换二", command=chapter5_6)
+chapter5menu.add_command(label="基本模型整体三角变换三", command=chapter5_7)
+chapter5menu.add_command(label="基本模型整体三角变换四", command=chapter5_8)
+chapter5menu.add_command(label="基本模型整体三角变换五", command=chapter5_9)
+chapter5menu.add_command(label="基本模型整体三角变换六", command=chapter5_10)
+chapter5menu.add_command(label="基本模型整体三角变换七", command=chapter5_11)
+chapter5menu.add_command(label="基本模型整体三角变换八", command=chapter5_12)
+chapter5menu.add_command(label="基本模型局部三角变换一", command=chapter5_13)
+chapter5menu.add_command(label="基本模型局部三角变换二", command=chapter5_14)
+chapter5menu.add_command(label="基本模型局部三角变换三", command=chapter5_15)
+chapter5menu.add_command(label="基本模型自变量三角变换一", command=chapter5_16)
+chapter5menu.add_command(label="基本模型自变量三角变换二", command=chapter5_17)
+chapter5menu.add_command(label="基本模型整体与局部复合三角变换一", command=chapter5_18)
+chapter5menu.add_command(label="基本模型整体与局部复合三角变换二", command=chapter5_19)
+chapter5menu.add_command(label="基本模型整体与自变量复合三角变换一", command=chapter5_20)
+chapter5menu.add_command(label="基本模型整体与自变量复合三角变换二", command=chapter5_21)
+chapter5menu.add_command(label="基本模型局部与自变量复合三角变换", command=chapter5_22)
+chapter5menu.add_command(label="基本模型整体幂函数变换一", command=chapter5_23)
+chapter5menu.add_command(label="基本模型整体幂函数变换二", command=chapter5_24)
+chapter5menu.add_command(label="基本模型整体幂函数变换三", command=chapter5_25)
+chapter5menu.add_command(label="基本模型整体幂函数变换四", command=chapter5_26)
+chapter5menu.add_command(label="基本模型整体幂函数变换五", command=chapter5_27)
+chapter5menu.add_command(label="基本模型整体幂函数变换六", command=chapter5_28)
+chapter5menu.add_command(label="基本模型整体幂函数变换七", command=chapter5_29)
+chapter5menu.add_command(label="基本模型局部幂函数变换一", command=chapter5_30)
+chapter5menu.add_command(label="基本模型局部幂函数变换二", command=chapter5_31)
+chapter5menu.add_command(label="基本模型局部幂函数变换三", command=chapter5_32)
+chapter5menu.add_command(label="基本模型局部幂函数变换四", command=chapter5_33)
+chapter5menu.add_command(label="基本模型自变量幂函数变换一", command=chapter5_34)
+chapter5menu.add_command(label="基本模型自变量幂函数变换二", command=chapter5_35)
+chapter5menu.add_command(label="基本模型自变量幂函数变换三", command=chapter5_36)
+chapter5menu.add_command(label="基本模型自变量幂函数变换四", command=chapter5_37)
+chapter5menu.add_command(label="moudel...", command=callback)
+chapter5menu.add_command(label="moudel...", command=callback)
+chapter5menu.add_command(label="moudel...", command=callback)
+chapter5menu.add_command(label="moudel...", command=callback)
+chapter5menu.add_command(label="moudel...", command=callback)
+chapter5menu.add_command(label="moudel...", command=callback)
+chapter5menu.add_command(label="moudel...", command=callback)
+chapter5menu.add_command(label="moudel...", command=callback)
+chapter5menu.add_command(label="moudel...", command=callback)
+chapter5menu.add_command(label="moudel...", command=callback)
+chapter5menu.add_command(label="moudel...", command=callback)
+chapter5menu.add_command(label="moudel...", command=callback)
+chapter5menu.add_command(label="moudel...", command=callback)
+chapter5menu.add_command(label="moudel...", command=callback)
+chapter5menu.add_command(label="moudel...", command=callback)
+chapter5menu.add_command(label="moudel...", command=callback)
+chapter5menu.add_command(label="moudel...", command=callback)
+chapter5menu.add_command(label="moudel...", command=callback)
 chapter5menu.add_command(label="moudel...", command=callback)
 menubar.add_cascade(label="第五章", menu=chapter5menu)
 
@@ -280,14 +721,15 @@ chapter_label = Label(param_area, text='第二章:', font=('华文行楷', 20, '
 chapter_label.grid(row=0, column=0, pady=40)
 part_label = Label(param_area, text='基本图像生成', font=('华文行楷', 20, 'italic'), width=15)
 part_label.grid(row=0, column=1)
+
 # 滑块
 param = {}
 v = IntVar()
-scales = {'q': {'range': (1, 36), 'value': IntVar(), 'pos': 1, 'describe': "迭代次数"},
-          's': {'range': (1, 128), 'value': IntVar(), 'pos': 2, 'describe': "图案密度"},
-          # 'w': {'range': (0, 600), 'value': IntVar(), 'pos': 3, 'describe': "图像大小"},
-          'xmin': {'range': (-600, 600), 'value': IntVar(), 'pos': 3, 'describe': "中心X坐标偏移"},
-          'ymin': {'range': (-600, 600), 'value': IntVar(), 'pos': 4, 'describe': "中心Y坐标偏移"}}
+scales = {  # 'q': {'range': (1, 36), 'value': IntVar(), 'pos': 1, 'describe': "迭代次数"},
+    's': {'range': (1, 128), 'value': IntVar(), 'pos': 2, 'describe': "图案密度"},
+    # 'w': {'range': (0, 600), 'value': IntVar(), 'pos': 3, 'describe': "图像大小"},
+    'xmin': {'range': (-600, 600), 'value': IntVar(), 'pos': 3, 'describe': "中心X坐标偏移"},
+    'ymin': {'range': (-600, 600), 'value': IntVar(), 'pos': 4, 'describe': "中心Y坐标偏移"}}
 for k, v in scales.items():
     Label(param_area, text=v['describe'], font=('华文行楷', 12)).grid(row=v['pos'], column=0, padx=30)
     scales[k]['target'] = Scale(param_area, variable=v['value'], from_=v['range'][0], to=v['range'][1],
@@ -295,9 +737,9 @@ for k, v in scales.items():
     scales[k]['target'].grid(row=v['pos'], column=1, columnspan=2)
 
     # 初始化滑块
-    if 1 == v['pos']:
-        v['value'].set(3)
-    elif 2 == v['pos']:
+    # if 1 == v['pos']:
+    #     v['value'].set(3)
+    if 2 == v['pos']:
         v['value'].set(12)
     # elif 3 == v['pos']:
     #     v['value'].set(600)
@@ -306,12 +748,16 @@ for k, v in scales.items():
     elif 4 == v['pos']:
         v['value'].set(0)
 
+Label(param_area, text='迭代次数', font=('华文行楷', 12)).grid(row=1, column=0, pady=15)
+Eq = Entry(param_area)
+Eq.grid(row=1, column=1)
+
 paramVar = StringVar()
 get_value()
 # Label(root, text="参数信息:").grid(row=6, column=1, pady=18)
 # Label(root, textvariable=paramVar).grid(row=6, column=2)
 
-Label(param_area, text='图像大小', font=('华文行楷', 12)).grid(row=5, column=0, pady=18)
+Label(param_area, text='图像大小', font=('华文行楷', 12)).grid(row=5, column=0, pady=15)
 Ew = Entry(param_area)
 Ew.grid(row=5, column=1)
 
