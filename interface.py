@@ -1051,7 +1051,7 @@ def chapter5_93():  # 函数与变系数的函数变换组合一
     part_label.config(text='自由组合3')
     global qrp
     qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(6), k_list=cmp.get_k_list(7),
-              mag=cmp.get_mag(0), tp=103, mtd=0)
+              mag=cmp.get_mag(0), tp=102, mtd=0)
 
 
 def chapter5_94():  # 函数与变系数的函数变换组合二
@@ -1059,7 +1059,7 @@ def chapter5_94():  # 函数与变系数的函数变换组合二
     part_label.config(text='自由组合4')
     global qrp
     qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(6), k_list=cmp.get_k_list(7),
-              mag=cmp.get_mag(0), tp=104, mtd=0)
+              mag=cmp.get_mag(0), tp=103, mtd=0)
 
 
 # 菜单栏
