@@ -4,9 +4,8 @@
 6_1_1_2
 """
 import cv2 as cv
-import tkinter as tk
 from tkinter import *
-from tkinter import ttk, filedialog
+from tkinter import ttk
 from PIL import Image, ImageTk
 from lib import colormap as cmp
 from lib import mathMoudel as mm
@@ -51,6 +50,11 @@ class QRP:
         path = 'images/save/' + name + '.png'
         cv.imwrite(path, self._cImg)
 
+    def set_colormap(self, split_point_index, k_list_index, mag_index):
+        self._split_point = cmp.get_split_point(split_point_index)
+        self._k_list = cmp.get_k_list(k_list_index)
+        self._mag = cmp.get_mag(mag_index)
+
 
 qrp = QRP()
 
@@ -61,26 +65,34 @@ def callback():
 
 # 列表框1
 def cmb1event(event):
-    if "图案样式1" == cmb1.get():
-        print("1")
-    elif "图案样式2" == cmb1.get():
-        print("2")
-    elif "图案样式3" == cmb1.get():
-        print("3")
-    elif "图案样式..." == cmb1.get():
-        print("more")
+    if "配色方案1" == cmb1.get():
+        qrp.set_colormap(0, 0, 0)
+    elif "配色方案2" == cmb1.get():
+        qrp.set_colormap(0, 1, 0)
+    elif "配色方案3" == cmb1.get():
+        qrp.set_colormap(1, 2, 1)
+    elif "配色方案4" == cmb1.get():
+        qrp.set_colormap(2, 3, 1)
+    elif "配色方案5" == cmb1.get():
+        qrp.set_colormap(0, 4, 0)
+    elif "配色方案6" == cmb1.get():
+        qrp.set_colormap(4, 5, 1)
+    elif "配色方案7" == cmb1.get():
+        qrp.set_colormap(5, 6, 0)
+    elif "配色方案8" == cmb1.get():
+        qrp.set_colormap(6, 7, 0)
 
 
-# 列表框2
-def cmb2event(event):
-    if "切割模式1" == cmb1.get():
-        print("1")
-    elif "切割模式2" == cmb1.get():
-        print("2")
-    elif "切割模式3" == cmb1.get():
-        print("3")
-    elif "切割模式..." == cmb1.get():
-        print("more")
+# # 列表框2
+# def cmb2event(event):
+#     if "切割模式1" == cmb1.get():
+#         print("1")
+#     elif "切割模式2" == cmb1.get():
+#         print("2")
+#     elif "切割模式3" == cmb1.get():
+#         print("3")
+#     elif "切割模式..." == cmb1.get():
+#         print("more")
 
 
 def get_value(v=0):
@@ -128,9 +140,9 @@ def reset():
         elif 2 == v['pos']:
             v['value'].set(12)
         elif 3 == v['pos']:
-            v['value'].set(0)
+            v['value'].set(1)
         elif 4 == v['pos']:
-            v['value'].set(0)
+            v['value'].set(1)
     get_value()
     tip.config(text='')
 
@@ -152,6 +164,7 @@ def chapter2_1():
     global qrp
     qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(0), k_list=cmp.get_k_list(0),
               mag=cmp.get_mag(0), tp=0, mtd=0)
+    cmb1.set("配色方案1")
 
 
 def chapter2_2():
@@ -160,6 +173,7 @@ def chapter2_2():
     global qrp
     qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(0), k_list=cmp.get_k_list(1),
               mag=cmp.get_mag(0), tp=0, mtd=0)
+    cmb1.set("配色方案2")
 
 
 def chapter3_1():
@@ -168,6 +182,7 @@ def chapter3_1():
     global qrp
     qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(1), k_list=cmp.get_k_list(2),
               mag=cmp.get_mag(1), tp=0, mtd=0)
+    cmb1.set("配色方案3")
 
 
 def chapter3_2():
@@ -176,6 +191,7 @@ def chapter3_2():
     global qrp
     qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(2), k_list=cmp.get_k_list(3),
               mag=cmp.get_mag(1), tp=0, mtd=0)
+    cmb1.set("配色方案4")
 
 
 def chapter3_3():
@@ -183,6 +199,7 @@ def chapter3_3():
     part_label.config(text='QB 赋值方式一')
     global qrp
     qrp = QRP(color_list=cmp.get_color_list(0), tp=0, mtd=1)
+    cmb1.set("配色方案1")
 
 
 def chapter3_4():
@@ -190,6 +207,7 @@ def chapter3_4():
     part_label.config(text='QB 赋值方式二')
     global qrp
     qrp = QRP(color_list=cmp.get_color_list(0), tp=1, mtd=1)
+    cmb1.set("配色方案1")
 
 
 def chapter3_5():
@@ -198,6 +216,7 @@ def chapter3_5():
     global qrp
     qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(3), k_list=cmp.random_k_list(),
               mag=cmp.get_mag(1), tp=0, mtd=0)
+    cmb1.set("配色方案1")
 
 
 def chapter3_6():
@@ -205,6 +224,7 @@ def chapter3_6():
     part_label.config(text='RGB 控制方式一')
     global qrp
     qrp = QRP(tp=0, mtd=2)
+    cmb1.set("配色方案1")
 
 
 def chapter3_7():
@@ -212,6 +232,7 @@ def chapter3_7():
     part_label.config(text='RGB 控制方式二')
     global qrp
     qrp = QRP(tp=1, mtd=2)
+    cmb1.set("配色方案1")
 
 
 def chapter3_8():
@@ -220,6 +241,7 @@ def chapter3_8():
     global qrp
     qrp = QRP(color_list=cmp.get_color_list(1), split_point=cmp.get_split_point(0), k_list=cmp.get_k_list(4),
               mag=cmp.get_mag(0), tp=0, mtd=0)
+    cmb1.set("配色方案5")
 
 
 def chapter3_9():
@@ -228,6 +250,7 @@ def chapter3_9():
     global qrp
     qrp = QRP(color_list=cmp.get_color_list(2), split_point=cmp.get_split_point(0), k_list=cmp.get_k_list(4),
               mag=cmp.get_mag(0), tp=0, mtd=0)
+    cmb1.set("配色方案5")
 
 
 def chapter4_1():
@@ -236,6 +259,7 @@ def chapter4_1():
     global qrp
     qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(4), k_list=cmp.get_k_list(5),
               mag=cmp.get_mag(1), tp=0, mtd=0)
+    cmb1.set("配色方案6")
 
 
 def chapter4_2():
@@ -244,6 +268,7 @@ def chapter4_2():
     global qrp
     qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(0), k_list=cmp.get_k_list(0),
               mag=cmp.get_mag(0), tp=1, mtd=0)
+    cmb1.set("配色方案1")
 
 
 def chapter4_3():
@@ -252,6 +277,7 @@ def chapter4_3():
     global qrp
     qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(0), k_list=cmp.get_k_list(0),
               mag=cmp.get_mag(0), tp=2, mtd=0)
+    cmb1.set("配色方案1")
 
 
 def chapter4_4():
@@ -260,6 +286,7 @@ def chapter4_4():
     global qrp
     qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(0), k_list=cmp.get_k_list(0),
               mag=cmp.get_mag(0), tp=3, mtd=0)
+    cmb1.set("配色方案1")
 
 
 def chapter4_5():
@@ -268,6 +295,7 @@ def chapter4_5():
     global qrp
     qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(0), k_list=cmp.get_k_list(0),
               mag=cmp.get_mag(0), tp=4, mtd=0)
+    cmb1.set("配色方案1")
 
 
 def chapter4_6():
@@ -276,6 +304,7 @@ def chapter4_6():
     global qrp
     qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(0), k_list=cmp.get_k_list(0),
               mag=cmp.get_mag(0), tp=5, mtd=0)
+    cmb1.set("配色方案1")
 
 
 def chapter4_7():
@@ -284,6 +313,7 @@ def chapter4_7():
     global qrp
     qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(0), k_list=cmp.get_k_list(0),
               mag=cmp.get_mag(0), tp=6, mtd=0)
+    cmb1.set("配色方案1")
 
 
 def chapter4_8():
@@ -292,6 +322,7 @@ def chapter4_8():
     global qrp
     qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(0), k_list=cmp.get_k_list(0),
               mag=cmp.get_mag(0), tp=7, mtd=0)
+    cmb1.set("配色方案1")
 
 
 def chapter4_9():
@@ -300,6 +331,7 @@ def chapter4_9():
     global qrp
     qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(0), k_list=cmp.get_k_list(0),
               mag=cmp.get_mag(0), tp=8, mtd=0)
+    cmb1.set("配色方案1")
 
 
 def chapter4_10():
@@ -308,6 +340,7 @@ def chapter4_10():
     global qrp
     qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(0), k_list=cmp.get_k_list(0),
               mag=cmp.get_mag(0), tp=9, mtd=0)
+    cmb1.set("配色方案1")
 
 
 def chapter5_1():
@@ -316,6 +349,7 @@ def chapter5_1():
     global qrp
     qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(0), k_list=cmp.get_k_list(0),
               mag=cmp.get_mag(0), tp=10, mtd=0)
+    cmb1.set("配色方案1")
 
 
 def chapter5_2():
@@ -324,6 +358,7 @@ def chapter5_2():
     global qrp
     qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(0), k_list=cmp.get_k_list(0),
               mag=cmp.get_mag(0), tp=11, mtd=0)
+    cmb1.set("配色方案1")
 
 
 def chapter5_3():
@@ -332,6 +367,7 @@ def chapter5_3():
     global qrp
     qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(0), k_list=cmp.get_k_list(0),
               mag=cmp.get_mag(0), tp=12, mtd=0)
+    cmb1.set("配色方案1")
 
 
 def chapter5_4():
@@ -340,6 +376,7 @@ def chapter5_4():
     global qrp
     qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(0), k_list=cmp.get_k_list(0),
               mag=cmp.get_mag(0), tp=13, mtd=0)
+    cmb1.set("配色方案1")
 
 
 def chapter5_5():
@@ -348,6 +385,7 @@ def chapter5_5():
     global qrp
     qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(0), k_list=cmp.get_k_list(0),
               mag=cmp.get_mag(0), tp=14, mtd=0)
+    cmb1.set("配色方案1")
 
 
 def chapter5_6():
@@ -356,6 +394,7 @@ def chapter5_6():
     global qrp
     qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(0), k_list=cmp.get_k_list(0),
               mag=cmp.get_mag(0), tp=15, mtd=0)
+    cmb1.set("配色方案1")
 
 
 def chapter5_7():
@@ -364,6 +403,7 @@ def chapter5_7():
     global qrp
     qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(0), k_list=cmp.get_k_list(0),
               mag=cmp.get_mag(0), tp=16, mtd=0)
+    cmb1.set("配色方案1")
 
 
 def chapter5_8():
@@ -372,6 +412,7 @@ def chapter5_8():
     global qrp
     qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(0), k_list=cmp.get_k_list(0),
               mag=cmp.get_mag(0), tp=17, mtd=0)
+    cmb1.set("配色方案1")
 
 
 def chapter5_9():
@@ -380,6 +421,7 @@ def chapter5_9():
     global qrp
     qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(0), k_list=cmp.get_k_list(0),
               mag=cmp.get_mag(0), tp=18, mtd=0)
+    cmb1.set("配色方案1")
 
 
 def chapter5_10():
@@ -388,6 +430,7 @@ def chapter5_10():
     global qrp
     qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(0), k_list=cmp.get_k_list(0),
               mag=cmp.get_mag(0), tp=19, mtd=0)
+    cmb1.set("配色方案1")
 
 
 def chapter5_11():
@@ -396,6 +439,7 @@ def chapter5_11():
     global qrp
     qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(0), k_list=cmp.get_k_list(0),
               mag=cmp.get_mag(0), tp=20, mtd=0)
+    cmb1.set("配色方案1")
 
 
 def chapter5_12():
@@ -404,6 +448,7 @@ def chapter5_12():
     global qrp
     qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(0), k_list=cmp.get_k_list(0),
               mag=cmp.get_mag(0), tp=21, mtd=0)
+    cmb1.set("配色方案1")
 
 
 def chapter5_13():
@@ -412,6 +457,7 @@ def chapter5_13():
     global qrp
     qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(0), k_list=cmp.get_k_list(0),
               mag=cmp.get_mag(0), tp=22, mtd=0)
+    cmb1.set("配色方案1")
 
 
 def chapter5_14():
@@ -420,6 +466,7 @@ def chapter5_14():
     global qrp
     qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(0), k_list=cmp.get_k_list(0),
               mag=cmp.get_mag(0), tp=23, mtd=0)
+    cmb1.set("配色方案1")
 
 
 def chapter5_15():
@@ -428,6 +475,7 @@ def chapter5_15():
     global qrp
     qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(0), k_list=cmp.get_k_list(0),
               mag=cmp.get_mag(0), tp=24, mtd=0)
+    cmb1.set("配色方案1")
 
 
 def chapter5_16():
@@ -436,6 +484,7 @@ def chapter5_16():
     global qrp
     qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(0), k_list=cmp.get_k_list(0),
               mag=cmp.get_mag(0), tp=25, mtd=0)
+    cmb1.set("配色方案1")
 
 
 def chapter5_17():
@@ -444,6 +493,7 @@ def chapter5_17():
     global qrp
     qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(0), k_list=cmp.get_k_list(0),
               mag=cmp.get_mag(0), tp=26, mtd=0)
+    cmb1.set("配色方案1")
 
 
 def chapter5_18():  # 整体局部三角变换1
@@ -452,6 +502,7 @@ def chapter5_18():  # 整体局部三角变换1
     global qrp
     qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(0), k_list=cmp.get_k_list(0),
               mag=cmp.get_mag(0), tp=27, mtd=0)
+    cmb1.set("配色方案1")
 
 
 def chapter5_19():  # 整体局部三角变换2
@@ -460,6 +511,7 @@ def chapter5_19():  # 整体局部三角变换2
     global qrp
     qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(0), k_list=cmp.get_k_list(0),
               mag=cmp.get_mag(0), tp=28, mtd=0)
+    cmb1.set("配色方案1")
 
 
 def chapter5_20():  # 整体自变量三角变换1
@@ -468,6 +520,7 @@ def chapter5_20():  # 整体自变量三角变换1
     global qrp
     qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(0), k_list=cmp.get_k_list(0),
               mag=cmp.get_mag(0), tp=29, mtd=0)
+    cmb1.set("配色方案1")
 
 
 def chapter5_21():  # 整体自变量三角变换2
@@ -476,6 +529,7 @@ def chapter5_21():  # 整体自变量三角变换2
     global qrp
     qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(0), k_list=cmp.get_k_list(0),
               mag=cmp.get_mag(0), tp=30, mtd=0)
+    cmb1.set("配色方案1")
 
 
 def chapter5_22():  # 局部自变量三角变换
@@ -484,6 +538,7 @@ def chapter5_22():  # 局部自变量三角变换
     global qrp
     qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(0), k_list=cmp.get_k_list(0),
               mag=cmp.get_mag(0), tp=31, mtd=0)
+    cmb1.set("配色方案1")
 
 
 def chapter5_23():  # 基本模型整体幂函数变换一
@@ -492,6 +547,7 @@ def chapter5_23():  # 基本模型整体幂函数变换一
     global qrp
     qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(5), k_list=cmp.get_k_list(6),
               mag=cmp.get_mag(0), tp=32, mtd=0)
+    cmb1.set("配色方案7")
 
 
 def chapter5_24():  # 基本模型整体幂函数变换二
@@ -500,6 +556,7 @@ def chapter5_24():  # 基本模型整体幂函数变换二
     global qrp
     qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(5), k_list=cmp.get_k_list(6),
               mag=cmp.get_mag(0), tp=33, mtd=0)
+    cmb1.set("配色方案7")
 
 
 def chapter5_25():  # 基本模型整体幂函数变换三
@@ -508,6 +565,7 @@ def chapter5_25():  # 基本模型整体幂函数变换三
     global qrp
     qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(5), k_list=cmp.get_k_list(6),
               mag=cmp.get_mag(0), tp=34, mtd=0)
+    cmb1.set("配色方案7")
 
 
 def chapter5_26():  # 基本模型整体幂函数变换四
@@ -516,6 +574,7 @@ def chapter5_26():  # 基本模型整体幂函数变换四
     global qrp
     qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(5), k_list=cmp.get_k_list(6),
               mag=cmp.get_mag(0), tp=35, mtd=0)
+    cmb1.set("配色方案7")
 
 
 def chapter5_27():  # 基本模型整体幂函数变换五
@@ -524,6 +583,7 @@ def chapter5_27():  # 基本模型整体幂函数变换五
     global qrp
     qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(5), k_list=cmp.get_k_list(6),
               mag=cmp.get_mag(0), tp=36, mtd=0)
+    cmb1.set("配色方案7")
 
 
 def chapter5_28():  # 基本模型整体幂函数变换六
@@ -532,6 +592,7 @@ def chapter5_28():  # 基本模型整体幂函数变换六
     global qrp
     qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(5), k_list=cmp.get_k_list(6),
               mag=cmp.get_mag(0), tp=37, mtd=0)
+    cmb1.set("配色方案7")
 
 
 def chapter5_29():  # 基本模型整体幂函数变换七
@@ -540,6 +601,7 @@ def chapter5_29():  # 基本模型整体幂函数变换七
     global qrp
     qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(5), k_list=cmp.get_k_list(6),
               mag=cmp.get_mag(0), tp=38, mtd=0)
+    cmb1.set("配色方案7")
 
 
 def chapter5_30():  # 基本模型局部幂函数变换一
@@ -548,6 +610,7 @@ def chapter5_30():  # 基本模型局部幂函数变换一
     global qrp
     qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(5), k_list=cmp.get_k_list(6),
               mag=cmp.get_mag(0), tp=39, mtd=0)
+    cmb1.set("配色方案7")
 
 
 def chapter5_31():  # 基本模型局部幂函数变换二
@@ -556,6 +619,7 @@ def chapter5_31():  # 基本模型局部幂函数变换二
     global qrp
     qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(5), k_list=cmp.get_k_list(6),
               mag=cmp.get_mag(0), tp=40, mtd=0)
+    cmb1.set("配色方案7")
 
 
 def chapter5_32():  # 基本模型局部幂函数变换三
@@ -564,6 +628,7 @@ def chapter5_32():  # 基本模型局部幂函数变换三
     global qrp
     qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(5), k_list=cmp.get_k_list(6),
               mag=cmp.get_mag(0), tp=41, mtd=0)
+    cmb1.set("配色方案7")
 
 
 def chapter5_33():  # 基本模型局部幂函数变换四
@@ -572,6 +637,7 @@ def chapter5_33():  # 基本模型局部幂函数变换四
     global qrp
     qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(5), k_list=cmp.get_k_list(6),
               mag=cmp.get_mag(0), tp=42, mtd=0)
+    cmb1.set("配色方案7")
 
 
 def chapter5_34():  # 基本模型自变量幂函数变换一
@@ -580,6 +646,7 @@ def chapter5_34():  # 基本模型自变量幂函数变换一
     global qrp
     qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(5), k_list=cmp.get_k_list(6),
               mag=cmp.get_mag(0), tp=43, mtd=0)
+    cmb1.set("配色方案7")
 
 
 def chapter5_35():  # 基本模型自变量幂函数变换二
@@ -588,6 +655,7 @@ def chapter5_35():  # 基本模型自变量幂函数变换二
     global qrp
     qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(5), k_list=cmp.get_k_list(6),
               mag=cmp.get_mag(0), tp=44, mtd=0)
+    cmb1.set("配色方案7")
 
 
 def chapter5_36():  # 基本模型自变量幂函数变换三
@@ -596,6 +664,7 @@ def chapter5_36():  # 基本模型自变量幂函数变换三
     global qrp
     qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(5), k_list=cmp.get_k_list(6),
               mag=cmp.get_mag(0), tp=45, mtd=0)
+    cmb1.set("配色方案7")
 
 
 def chapter5_37():  # 基本模型自变量幂函数变换四
@@ -604,6 +673,7 @@ def chapter5_37():  # 基本模型自变量幂函数变换四
     global qrp
     qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(5), k_list=cmp.get_k_list(6),
               mag=cmp.get_mag(0), tp=46, mtd=0)
+    cmb1.set("配色方案7")
 
 
 def chapter5_38():  # 基本模型整体与局部复合的幂函数变换
@@ -612,6 +682,7 @@ def chapter5_38():  # 基本模型整体与局部复合的幂函数变换
     global qrp
     qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(5), k_list=cmp.get_k_list(6),
               mag=cmp.get_mag(0), tp=47, mtd=0)
+    cmb1.set("配色方案7")
 
 
 def chapter5_39():  # 基本模型整体与自变量复合的幂函数变换
@@ -620,6 +691,7 @@ def chapter5_39():  # 基本模型整体与自变量复合的幂函数变换
     global qrp
     qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(5), k_list=cmp.get_k_list(6),
               mag=cmp.get_mag(0), tp=48, mtd=0)
+    cmb1.set("配色方案7")
 
 
 def chapter5_40():  # 基本模型局部与自变量复合的幂函数变换一
@@ -628,6 +700,7 @@ def chapter5_40():  # 基本模型局部与自变量复合的幂函数变换一
     global qrp
     qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(5), k_list=cmp.get_k_list(6),
               mag=cmp.get_mag(0), tp=49, mtd=0)
+    cmb1.set("配色方案7")
 
 
 def chapter5_41():  # 基本模型局部与自变量复合的幂函数变换二
@@ -636,6 +709,7 @@ def chapter5_41():  # 基本模型局部与自变量复合的幂函数变换二
     global qrp
     qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(5), k_list=cmp.get_k_list(6),
               mag=cmp.get_mag(0), tp=50, mtd=0)
+    cmb1.set("配色方案7")
 
 
 def chapter5_42():  # 基本模型整体、局部与自变量复合的幂函数变换
@@ -644,6 +718,7 @@ def chapter5_42():  # 基本模型整体、局部与自变量复合的幂函数�
     global qrp
     qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(5), k_list=cmp.get_k_list(6),
               mag=cmp.get_mag(0), tp=51, mtd=0)
+    cmb1.set("配色方案7")
 
 
 def chapter5_43():  # 基本模型整体指数函数变换一
@@ -652,6 +727,7 @@ def chapter5_43():  # 基本模型整体指数函数变换一
     global qrp
     qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(5), k_list=cmp.get_k_list(6),
               mag=cmp.get_mag(0), tp=52, mtd=0)
+    cmb1.set("配色方案7")
 
 
 def chapter5_44():  # 基本模型整体指数函数变换二
@@ -660,6 +736,7 @@ def chapter5_44():  # 基本模型整体指数函数变换二
     global qrp
     qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(5), k_list=cmp.get_k_list(6),
               mag=cmp.get_mag(0), tp=53, mtd=0)
+    cmb1.set("配色方案7")
 
 
 def chapter5_45():  # 基本模型局部指数函数变换一
@@ -668,6 +745,7 @@ def chapter5_45():  # 基本模型局部指数函数变换一
     global qrp
     qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(5), k_list=cmp.get_k_list(6),
               mag=cmp.get_mag(0), tp=54, mtd=0)
+    cmb1.set("配色方案7")
 
 
 def chapter5_46():  # 基本模型局部指数函数变换二
@@ -676,6 +754,7 @@ def chapter5_46():  # 基本模型局部指数函数变换二
     global qrp
     qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(5), k_list=cmp.get_k_list(6),
               mag=cmp.get_mag(0), tp=55, mtd=0)
+    cmb1.set("配色方案7")
 
 
 def chapter5_47():  # 基本模型整体与局部指数函数变换一
@@ -684,6 +763,7 @@ def chapter5_47():  # 基本模型整体与局部指数函数变换一
     global qrp
     qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(5), k_list=cmp.get_k_list(6),
               mag=cmp.get_mag(0), tp=56, mtd=0)
+    cmb1.set("配色方案7")
 
 
 def chapter5_48():  # 基本模型整体与局部指数函数变换二
@@ -692,6 +772,7 @@ def chapter5_48():  # 基本模型整体与局部指数函数变换二
     global qrp
     qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(5), k_list=cmp.get_k_list(6),
               mag=cmp.get_mag(0), tp=57, mtd=0)
+    cmb1.set("配色方案7")
 
 
 def chapter5_49():  # 基本模型整体对数函数变换一
@@ -700,6 +781,7 @@ def chapter5_49():  # 基本模型整体对数函数变换一
     global qrp
     qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(5), k_list=cmp.get_k_list(6),
               mag=cmp.get_mag(0), tp=58, mtd=0)
+    cmb1.set("配色方案7")
 
 
 def chapter5_50():  # 基本模型整体对数函数变换二
@@ -708,6 +790,7 @@ def chapter5_50():  # 基本模型整体对数函数变换二
     global qrp
     qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(5), k_list=cmp.get_k_list(6),
               mag=cmp.get_mag(0), tp=59, mtd=0)
+    cmb1.set("配色方案7")
 
 
 def chapter5_51():  # 基本模型整体对数函数变换三
@@ -716,6 +799,7 @@ def chapter5_51():  # 基本模型整体对数函数变换三
     global qrp
     qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(5), k_list=cmp.get_k_list(6),
               mag=cmp.get_mag(0), tp=60, mtd=0)
+    cmb1.set("配色方案7")
 
 
 def chapter5_52():  # 基本模型局部对数函数变换
@@ -724,6 +808,7 @@ def chapter5_52():  # 基本模型局部对数函数变换
     global qrp
     qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(5), k_list=cmp.get_k_list(6),
               mag=cmp.get_mag(0), tp=61, mtd=0)
+    cmb1.set("配色方案7")
 
 
 def chapter5_53():  # 基本模型自变量对数函数变换
@@ -732,6 +817,7 @@ def chapter5_53():  # 基本模型自变量对数函数变换
     global qrp
     qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(5), k_list=cmp.get_k_list(6),
               mag=cmp.get_mag(0), tp=62, mtd=0)
+    cmb1.set("配色方案7")
 
 
 def chapter5_54():  # 基本模型整体与自变量复合对数函数变换
@@ -740,6 +826,7 @@ def chapter5_54():  # 基本模型整体与自变量复合对数函数变换
     global qrp
     qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(5), k_list=cmp.get_k_list(6),
               mag=cmp.get_mag(0), tp=63, mtd=0)
+    cmb1.set("配色方案7")
 
 
 def chapter5_55():  # 基本模型整体与局部复合对数函数变换
@@ -748,6 +835,7 @@ def chapter5_55():  # 基本模型整体与局部复合对数函数变换
     global qrp
     qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(5), k_list=cmp.get_k_list(6),
               mag=cmp.get_mag(0), tp=64, mtd=0)
+    cmb1.set("配色方案7")
 
 
 def chapter5_56():  # 基本模型局部与自变量复合对数函数变换
@@ -756,6 +844,7 @@ def chapter5_56():  # 基本模型局部与自变量复合对数函数变换
     global qrp
     qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(5), k_list=cmp.get_k_list(6),
               mag=cmp.get_mag(0), tp=65, mtd=0)
+    cmb1.set("配色方案7")
 
 
 def chapter5_57():  # 基本模型整体、局部与自变量复合对数函数变换
@@ -764,6 +853,7 @@ def chapter5_57():  # 基本模型整体、局部与自变量复合对数函数�
     global qrp
     qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(5), k_list=cmp.get_k_list(6),
               mag=cmp.get_mag(0), tp=66, mtd=0)
+    cmb1.set("配色方案7")
 
 
 def chapter5_58():  # 叠加三角函数变换一
@@ -772,6 +862,7 @@ def chapter5_58():  # 叠加三角函数变换一
     global qrp
     qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(6), k_list=cmp.get_k_list(7),
               mag=cmp.get_mag(0), tp=67, mtd=0)
+    cmb1.set("配色方案8")
 
 
 def chapter5_59():  # 叠加三角函数变换二
@@ -780,6 +871,7 @@ def chapter5_59():  # 叠加三角函数变换二
     global qrp
     qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(6), k_list=cmp.get_k_list(7),
               mag=cmp.get_mag(0), tp=68, mtd=0)
+    cmb1.set("配色方案8")
 
 
 def chapter5_60():  # 叠加多项式变换一
@@ -788,6 +880,7 @@ def chapter5_60():  # 叠加多项式变换一
     global qrp
     qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(6), k_list=cmp.get_k_list(7),
               mag=cmp.get_mag(0), tp=69, mtd=0)
+    cmb1.set("配色方案8")
 
 
 def chapter5_61():  # 叠加多项式变换二
@@ -796,6 +889,7 @@ def chapter5_61():  # 叠加多项式变换二
     global qrp
     qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(6), k_list=cmp.get_k_list(7),
               mag=cmp.get_mag(0), tp=70, mtd=0)
+    cmb1.set("配色方案8")
 
 
 def chapter5_62():  # 叠加幂函数的变换一
@@ -804,6 +898,7 @@ def chapter5_62():  # 叠加幂函数的变换一
     global qrp
     qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(6), k_list=cmp.get_k_list(7),
               mag=cmp.get_mag(0), tp=71, mtd=0)
+    cmb1.set("配色方案8")
 
 
 def chapter5_63():  # 叠加幂函数的变换二
@@ -812,6 +907,7 @@ def chapter5_63():  # 叠加幂函数的变换二
     global qrp
     qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(6), k_list=cmp.get_k_list(7),
               mag=cmp.get_mag(0), tp=72, mtd=0)
+    cmb1.set("配色方案8")
 
 
 def chapter5_64():  # 叠加幂函数的变换三
@@ -820,6 +916,7 @@ def chapter5_64():  # 叠加幂函数的变换三
     global qrp
     qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(6), k_list=cmp.get_k_list(7),
               mag=cmp.get_mag(0), tp=73, mtd=0)
+    cmb1.set("配色方案8")
 
 
 def chapter5_65():  # 叠加幂函数的变换四
@@ -828,6 +925,7 @@ def chapter5_65():  # 叠加幂函数的变换四
     global qrp
     qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(6), k_list=cmp.get_k_list(7),
               mag=cmp.get_mag(0), tp=74, mtd=0)
+    cmb1.set("配色方案8")
 
 
 def chapter5_66():  # 叠加幂函数的变换五
@@ -836,6 +934,7 @@ def chapter5_66():  # 叠加幂函数的变换五
     global qrp
     qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(6), k_list=cmp.get_k_list(7),
               mag=cmp.get_mag(0), tp=75, mtd=0)
+    cmb1.set("配色方案8")
 
 
 def chapter5_67():  # 叠加幂函数的变换六
@@ -844,6 +943,7 @@ def chapter5_67():  # 叠加幂函数的变换六
     global qrp
     qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(6), k_list=cmp.get_k_list(7),
               mag=cmp.get_mag(0), tp=76, mtd=0)
+    cmb1.set("配色方案8")
 
 
 def chapter5_68():  # 叠加指数函数的变换
@@ -852,6 +952,7 @@ def chapter5_68():  # 叠加指数函数的变换
     global qrp
     qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(6), k_list=cmp.get_k_list(7),
               mag=cmp.get_mag(0), tp=77, mtd=0)
+    cmb1.set("配色方案8")
 
 
 def chapter5_69():  # 叠加对数函数的变换一
@@ -860,6 +961,7 @@ def chapter5_69():  # 叠加对数函数的变换一
     global qrp
     qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(6), k_list=cmp.get_k_list(7),
               mag=cmp.get_mag(0), tp=78, mtd=0)
+    cmb1.set("配色方案8")
 
 
 def chapter5_70():  # 叠加对数函数的变换二
@@ -868,6 +970,7 @@ def chapter5_70():  # 叠加对数函数的变换二
     global qrp
     qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(6), k_list=cmp.get_k_list(7),
               mag=cmp.get_mag(0), tp=79, mtd=0)
+    cmb1.set("配色方案8")
 
 
 def chapter5_71():  # 基于绝对值函数变换的叠加幂函数变换一
@@ -876,6 +979,7 @@ def chapter5_71():  # 基于绝对值函数变换的叠加幂函数变换一
     global qrp
     qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(6), k_list=cmp.get_k_list(7),
               mag=cmp.get_mag(0), tp=80, mtd=0)
+    cmb1.set("配色方案8")
 
 
 def chapter5_72():  # 基于绝对值函数变换的叠加幂函数变换二
@@ -884,6 +988,7 @@ def chapter5_72():  # 基于绝对值函数变换的叠加幂函数变换二
     global qrp
     qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(6), k_list=cmp.get_k_list(7),
               mag=cmp.get_mag(0), tp=81, mtd=0)
+    cmb1.set("配色方案8")
 
 
 def chapter5_73():  # 基于三角函数变换的叠加幂函数变换一
@@ -892,6 +997,7 @@ def chapter5_73():  # 基于三角函数变换的叠加幂函数变换一
     global qrp
     qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(6), k_list=cmp.get_k_list(7),
               mag=cmp.get_mag(0), tp=82, mtd=0)
+    cmb1.set("配色方案8")
 
 
 def chapter5_74():  # 基于三角函数变换的叠加幂函数变换二
@@ -900,6 +1006,7 @@ def chapter5_74():  # 基于三角函数变换的叠加幂函数变换二
     global qrp
     qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(6), k_list=cmp.get_k_list(7),
               mag=cmp.get_mag(0), tp=83, mtd=0)
+    cmb1.set("配色方案8")
 
 
 def chapter5_75():  # 基于三角函数变换的叠加幂函数变换三
@@ -908,6 +1015,7 @@ def chapter5_75():  # 基于三角函数变换的叠加幂函数变换三
     global qrp
     qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(6), k_list=cmp.get_k_list(7),
               mag=cmp.get_mag(0), tp=84, mtd=0)
+    cmb1.set("配色方案8")
 
 
 def chapter5_76():  # 基于指数函数变换的叠加幂函数变换一
@@ -916,6 +1024,7 @@ def chapter5_76():  # 基于指数函数变换的叠加幂函数变换一
     global qrp
     qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(6), k_list=cmp.get_k_list(7),
               mag=cmp.get_mag(0), tp=85, mtd=0)
+    cmb1.set("配色方案8")
 
 
 def chapter5_77():  # 基于指数函数变换的叠加幂函数变换二
@@ -924,6 +1033,7 @@ def chapter5_77():  # 基于指数函数变换的叠加幂函数变换二
     global qrp
     qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(6), k_list=cmp.get_k_list(7),
               mag=cmp.get_mag(0), tp=86, mtd=0)
+    cmb1.set("配色方案8")
 
 
 def chapter5_78():  # 基于对数函数变换的叠加幂函数变换一
@@ -932,6 +1042,7 @@ def chapter5_78():  # 基于对数函数变换的叠加幂函数变换一
     global qrp
     qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(6), k_list=cmp.get_k_list(7),
               mag=cmp.get_mag(0), tp=87, mtd=0)
+    cmb1.set("配色方案8")
 
 
 def chapter5_79():  # 基于对数函数变换的叠加幂函数变换二
@@ -940,6 +1051,7 @@ def chapter5_79():  # 基于对数函数变换的叠加幂函数变换二
     global qrp
     qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(6), k_list=cmp.get_k_list(7),
               mag=cmp.get_mag(0), tp=88, mtd=0)
+    cmb1.set("配色方案8")
 
 
 def chapter5_80():  # 基于对数函数变换的叠加幂函数变换三
@@ -948,6 +1060,7 @@ def chapter5_80():  # 基于对数函数变换的叠加幂函数变换三
     global qrp
     qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(6), k_list=cmp.get_k_list(7),
               mag=cmp.get_mag(0), tp=89, mtd=0)
+    cmb1.set("配色方案8")
 
 
 def chapter5_81():  # 基于绝对值函数变换的叠加对数函数变换
@@ -956,6 +1069,7 @@ def chapter5_81():  # 基于绝对值函数变换的叠加对数函数变换
     global qrp
     qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(6), k_list=cmp.get_k_list(7),
               mag=cmp.get_mag(0), tp=90, mtd=0)
+    cmb1.set("配色方案8")
 
 
 def chapter5_82():  # 基于三角函数变换的叠加对数函数变换
@@ -964,6 +1078,7 @@ def chapter5_82():  # 基于三角函数变换的叠加对数函数变换
     global qrp
     qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(6), k_list=cmp.get_k_list(7),
               mag=cmp.get_mag(0), tp=91, mtd=0)
+    cmb1.set("配色方案8")
 
 
 def chapter5_83():  # 基于指数函数变换的叠加对数函数变换一
@@ -972,6 +1087,7 @@ def chapter5_83():  # 基于指数函数变换的叠加对数函数变换一
     global qrp
     qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(6), k_list=cmp.get_k_list(7),
               mag=cmp.get_mag(0), tp=92, mtd=0)
+    cmb1.set("配色方案8")
 
 
 def chapter5_84():  # 基于指数函数变换的叠加对数函数变换二
@@ -980,6 +1096,7 @@ def chapter5_84():  # 基于指数函数变换的叠加对数函数变换二
     global qrp
     qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(6), k_list=cmp.get_k_list(7),
               mag=cmp.get_mag(0), tp=93, mtd=0)
+    cmb1.set("配色方案8")
 
 
 def chapter5_85():  # 三角函数的连乘变换一
@@ -988,6 +1105,7 @@ def chapter5_85():  # 三角函数的连乘变换一
     global qrp
     qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(6), k_list=cmp.get_k_list(7),
               mag=cmp.get_mag(0), tp=94, mtd=0)
+    cmb1.set("配色方案8")
 
 
 def chapter5_86():  # 三角函数的连乘变换二
@@ -996,6 +1114,7 @@ def chapter5_86():  # 三角函数的连乘变换二
     global qrp
     qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(6), k_list=cmp.get_k_list(7),
               mag=cmp.get_mag(0), tp=95, mtd=0)
+    cmb1.set("配色方案8")
 
 
 def chapter5_87():  # 三角函数的连乘变换三
@@ -1004,6 +1123,7 @@ def chapter5_87():  # 三角函数的连乘变换三
     global qrp
     qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(6), k_list=cmp.get_k_list(7),
               mag=cmp.get_mag(0), tp=96, mtd=0)
+    cmb1.set("配色方案8")
 
 
 def chapter5_88():  # 其他形式连乘变换一
@@ -1012,6 +1132,7 @@ def chapter5_88():  # 其他形式连乘变换一
     global qrp
     qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(6), k_list=cmp.get_k_list(7),
               mag=cmp.get_mag(0), tp=97, mtd=0)
+    cmb1.set("配色方案8")
 
 
 def chapter5_89():  # 其他形式连乘变换二
@@ -1020,6 +1141,7 @@ def chapter5_89():  # 其他形式连乘变换二
     global qrp
     qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(6), k_list=cmp.get_k_list(7),
               mag=cmp.get_mag(0), tp=98, mtd=0)
+    cmb1.set("配色方案8")
 
 
 def chapter5_90():  # 其他形式连乘变换三
@@ -1028,6 +1150,7 @@ def chapter5_90():  # 其他形式连乘变换三
     global qrp
     qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(6), k_list=cmp.get_k_list(7),
               mag=cmp.get_mag(0), tp=99, mtd=0)
+    cmb1.set("配色方案8")
 
 
 def chapter5_91():  # 函数之间自由组合的变换方式一
@@ -1036,6 +1159,7 @@ def chapter5_91():  # 函数之间自由组合的变换方式一
     global qrp
     qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(6), k_list=cmp.get_k_list(7),
               mag=cmp.get_mag(0), tp=100, mtd=0)
+    cmb1.set("配色方案8")
 
 
 def chapter5_92():  # 函数之间自由组合的变换方式二
@@ -1044,6 +1168,7 @@ def chapter5_92():  # 函数之间自由组合的变换方式二
     global qrp
     qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(6), k_list=cmp.get_k_list(7),
               mag=cmp.get_mag(0), tp=101, mtd=0)
+    cmb1.set("配色方案8")
 
 
 def chapter5_93():  # 函数与变系数的函数变换组合一
@@ -1052,6 +1177,7 @@ def chapter5_93():  # 函数与变系数的函数变换组合一
     global qrp
     qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(6), k_list=cmp.get_k_list(7),
               mag=cmp.get_mag(0), tp=102, mtd=0)
+    cmb1.set("配色方案8")
 
 
 def chapter5_94():  # 函数与变系数的函数变换组合二
@@ -1060,6 +1186,7 @@ def chapter5_94():  # 函数与变系数的函数变换组合二
     global qrp
     qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(6), k_list=cmp.get_k_list(7),
               mag=cmp.get_mag(0), tp=103, mtd=0)
+    cmb1.set("配色方案8")
 
 
 def chapter6_1():  # 求导变换一
@@ -1068,6 +1195,7 @@ def chapter6_1():  # 求导变换一
     global qrp
     qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(6), k_list=cmp.get_k_list(7),
               mag=cmp.get_mag(0), tp=104, mtd=0)
+    cmb1.set("配色方案8")
 
 
 def chapter6_2():  # 求导变换二
@@ -1076,6 +1204,7 @@ def chapter6_2():  # 求导变换二
     global qrp
     qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(6), k_list=cmp.get_k_list(7),
               mag=cmp.get_mag(0), tp=105, mtd=0)
+    cmb1.set("配色方案8")
 
 
 def chapter6_3():  # 求导变换三
@@ -1084,6 +1213,7 @@ def chapter6_3():  # 求导变换三
     global qrp
     qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(6), k_list=cmp.get_k_list(7),
               mag=cmp.get_mag(0), tp=106, mtd=0)
+    cmb1.set("配色方案8")
 
 
 def chapter6_4():  # 求导变换四
@@ -1092,6 +1222,7 @@ def chapter6_4():  # 求导变换四
     global qrp
     qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(6), k_list=cmp.get_k_list(7),
               mag=cmp.get_mag(0), tp=107, mtd=0)
+    cmb1.set("配色方案8")
 
 
 def chapter6_5():  # 求导变换五
@@ -1100,6 +1231,7 @@ def chapter6_5():  # 求导变换五
     global qrp
     qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(6), k_list=cmp.get_k_list(7),
               mag=cmp.get_mag(0), tp=108, mtd=0)
+    cmb1.set("配色方案8")
 
 
 def chapter6_6():  # 求导变换六
@@ -1108,6 +1240,7 @@ def chapter6_6():  # 求导变换六
     global qrp
     qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(6), k_list=cmp.get_k_list(7),
               mag=cmp.get_mag(0), tp=109, mtd=0)
+    cmb1.set("配色方案8")
 
 
 def chapter6_7():  # 基本模型局部的泰勒级数展开式一
@@ -1116,6 +1249,7 @@ def chapter6_7():  # 基本模型局部的泰勒级数展开式一
     global qrp
     qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(6), k_list=cmp.get_k_list(7),
               mag=cmp.get_mag(0), tp=110, mtd=0)
+    cmb1.set("配色方案8")
 
 
 def chapter6_8():  # 基本模型局部的泰勒级数展开式二
@@ -1124,6 +1258,7 @@ def chapter6_8():  # 基本模型局部的泰勒级数展开式二
     global qrp
     qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(6), k_list=cmp.get_k_list(7),
               mag=cmp.get_mag(0), tp=111, mtd=0)
+    cmb1.set("配色方案8")
 
 
 def chapter6_9():  # 基本模型局部的泰勒级数展开式三
@@ -1132,6 +1267,7 @@ def chapter6_9():  # 基本模型局部的泰勒级数展开式三
     global qrp
     qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(6), k_list=cmp.get_k_list(7),
               mag=cmp.get_mag(0), tp=112, mtd=0)
+    cmb1.set("配色方案8")
 
 
 def chapter6_10():  # 基本模型局部的泰勒级数展开式四
@@ -1140,6 +1276,7 @@ def chapter6_10():  # 基本模型局部的泰勒级数展开式四
     global qrp
     qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(6), k_list=cmp.get_k_list(7),
               mag=cmp.get_mag(0), tp=113, mtd=0)
+    cmb1.set("配色方案8")
 
 
 def chapter6_11():  # 基本模型泰勒级数展开式的变换一
@@ -1148,6 +1285,7 @@ def chapter6_11():  # 基本模型泰勒级数展开式的变换一
     global qrp
     qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(6), k_list=cmp.get_k_list(7),
               mag=cmp.get_mag(0), tp=114, mtd=0)
+    cmb1.set("配色方案8")
 
 
 def chapter6_12():  # 基本模型泰勒级数展开式的变换二
@@ -1156,6 +1294,7 @@ def chapter6_12():  # 基本模型泰勒级数展开式的变换二
     global qrp
     qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(6), k_list=cmp.get_k_list(7),
               mag=cmp.get_mag(0), tp=115, mtd=0)
+    cmb1.set("配色方案8")
 
 
 def chapter6_13():  # 局部替换的傅里叶展开形式
@@ -1164,6 +1303,7 @@ def chapter6_13():  # 局部替换的傅里叶展开形式
     global qrp
     qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(6), k_list=cmp.get_k_list(7),
               mag=cmp.get_mag(0), tp=116, mtd=0)
+    cmb1.set("配色方案8")
 
 
 # 菜单栏
@@ -1353,9 +1493,9 @@ for k, v in scales.items():
     # elif 3 == v['pos']:
     #     v['value'].set(600)
     elif 3 == v['pos']:
-        v['value'].set(0)
+        v['value'].set(1)
     elif 4 == v['pos']:
-        v['value'].set(0)
+        v['value'].set(1)
 
 Label(param_area, text='迭代次数', font=('华文行楷', 12)).grid(row=1, column=0, pady=15)
 Eq = Entry(param_area)
@@ -1372,19 +1512,19 @@ Ew.grid(row=5, column=1)
 
 # 下拉列表
 cmb1 = ttk.Combobox(param_area)
-Label(param_area, text="图案样式:", font=('华文行楷', 12)).grid(row=7, column=1)
+Label(param_area, text="配色方案", font=('华文行楷', 12)).grid(row=7, column=1)
 cmb1.grid(row=8, column=1, pady=5)
-cmb1['value'] = ('图案样式1', '图案样式2', '图案样式3', '图案样式...')
+cmb1['value'] = ('配色方案1', '配色方案2', '配色方案3', '配色方案4', '配色方案5', '配色方案6', '配色方案7', '配色方案8')
 cmb1.current(0)
 
-cmb2 = ttk.Combobox(param_area)
-Label(param_area, text="切割模式:", font=('华文行楷', 12)).grid(row=9, column=1)
-cmb2.grid(row=10, column=1, pady=5)
-cmb2['value'] = ('切割模式1', '切割模式2', '切割模式3', '切割模式...')
-cmb2.current(0)
+# cmb2 = ttk.Combobox(param_area)
+# Label(param_area, text="切割模式:", font=('华文行楷', 12)).grid(row=9, column=1)
+# cmb2.grid(row=10, column=1, pady=5)
+# cmb2['value'] = ('切割模式1', '切割模式2', '切割模式3', '切割模式...')
+# cmb2.current(0)
 
 cmb1.bind("<<ComboboxSelected>>", cmb1event)
-cmb2.bind("<<ComboboxSelected>>", cmb2event)
+# cmb2.bind("<<ComboboxSelected>>", cmb2event)
 
 tip = Label(param_area, font=('华文行楷', 12))
 tip.grid(row=7, column=0)
@@ -1398,9 +1538,9 @@ btn2.grid(row=9, column=0)
 btn3 = Button(param_area, text='重置', font=('华文行楷', 12), width='10', command=reset)
 btn3.grid(row=10, column=0)
 
-Label(param_area, text='文件名', font=('华文行楷', 12)).grid(row=11, column=0, pady=18)
+Label(param_area, text='文件名', font=('华文行楷', 12)).grid(row=9, column=1, pady=0)  # pady=18
 En = Entry(param_area)
-En.grid(row=11, column=1)
+En.grid(row=10, column=1)
 
 param_area.pack(side=RIGHT)
 
