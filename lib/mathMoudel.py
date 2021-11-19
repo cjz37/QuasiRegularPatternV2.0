@@ -1772,9 +1772,9 @@ def get_color_set(q, s, w, xmin, ymin, tp=0):
     Se2 = int(random.random() * 255 + 1)
     Se3 = int(random.random() * 255 + 1)
     # 为保证图形一致先采用固定值
-    Se1 = 239
-    Se2 = 152
-    Se3 = 16
+    # Se1 = 239
+    # Se2 = 152
+    # Se3 = 16
     # Se1 = 253
     # Se2 = 24
     # Se3 = 11
