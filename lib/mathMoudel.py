@@ -1452,6 +1452,250 @@ def get_h_set(q, s, w, xmin, ymin, mag=10, tp=0):
                     h = h + np.exp(np.power(np.cos(x * np.cos(coslist[i]) + y * np.sin(sinlist[i])), i))
                 h1 = math.ceil(h * mag)
                 h_set[ny][nx] = h1
+    elif 104 == tp:  # 6 求导变换一
+        for i in range(1, Q):
+            coslist[i] = np.cos(2 * pi * i / q)
+            sinlist[i] = np.sin(2 * pi * i / q)
+        for nx in range(W):
+            for ny in range(W):
+                x = xmin + (nx - halfw) * deltax
+                y = ymin + (ny - halfw) * deltay
+                h = 0
+                for i in range(1, Q):
+                    h = h - np.cos(x * coslist[i] + y * sinlist[i]) * coslist[i] * sinlist[i]
+                h1 = math.ceil(h * mag)
+                h_set[ny][nx] = h1
+    elif 105 == tp:  # 6 求导变换二
+        for i in range(1, Q):
+            coslist[i] = np.cos(2 * pi * i / q)
+            sinlist[i] = np.sin(2 * pi * i / q)
+        for nx in range(W):
+            for ny in range(W):
+                x = xmin + (nx - halfw) * deltax
+                y = ymin + (ny - halfw) * deltay
+                h = 0
+                temp1 = np.cos(x * coslist[i] + y * sinlist[i])
+                temp2 = np.sin(x * coslist[i] + y * sinlist[i])
+                for i in range(1, Q):
+                    h = h - (np.exp(temp1) * temp1 + 2 * temp2) * coslist[i] * sinlist[i]
+                h1 = math.ceil(h * mag)
+                h_set[ny][nx] = h1
+    elif 106 == tp:  # 6 求导变换三
+        for i in range(1, Q):
+            coslist[i] = np.cos(2 * pi * i / q)
+            sinlist[i] = np.sin(2 * pi * i / q)
+        for nx in range(W):
+            for ny in range(W):
+                x = xmin + (nx - halfw) * deltax
+                y = ymin + (ny - halfw) * deltay
+                h = 0
+                pwq2 = int(q) * int(q)
+                X = 2 * x * pi
+                Y = 2 * y * pi
+                for i in range(1, Q):
+                    h = h - np.sin(x * coslist[i] + y * sinlist[i]) * \
+                        (X * i / pwq2 * sinlist[i] - Y * i / pwq2 * coslist[i])
+                h1 = math.ceil(h * mag)
+                h_set[ny][nx] = h1
+    elif 107 == tp:  # 6 求导变换四
+        for i in range(1, Q):
+            coslist[i] = np.cos(2 * pi * i / q)
+            sinlist[i] = np.sin(2 * pi * i / q)
+        for nx in range(W):
+            for ny in range(W):
+                x = xmin + (nx - halfw) * deltax
+                y = ymin + (ny - halfw) * deltay
+                pwq2 = int(q) * int(q)
+                h = 0
+                for i in range(1, Q):
+                    cxcys = np.cos(x * coslist[i] + y * sinlist[i])
+                    sxcys = np.sin(x * coslist[i] + y * sinlist[i])
+                    temp = 2 * x * pi * i / pwq2 * sinlist[i] - 2 * y * pi * i / pwq2 * coslist[i]
+                    h = h + np.exp(sxcys) * cxcys * temp - 3 * cxcys * cxcys * temp
+                h1 = math.ceil(h * mag)
+                h_set[ny][nx] = h1
+    elif 108 == tp:  # 6 求导变换五
+        for i in range(1, Q):
+            coslist[i] = np.cos(2 * pi * i / q)
+            sinlist[i] = np.sin(2 * pi * i / q)
+        for nx in range(W):
+            for ny in range(W):
+                x = xmin + (nx - halfw) * deltax
+                y = ymin + (ny - halfw) * deltay
+                h = 0
+                for i in range(1, Q):
+                    h = h - np.sin(x * coslist[i] + y * sinlist[i]) * \
+                        (2 * x * pi / q * sinlist[i] - 2 * y * pi / q * coslist[i])
+                h1 = math.ceil(h * mag)
+                h_set[ny][nx] = h1
+    elif 109 == tp:  # 6 求导变换六
+        for i in range(1, Q):
+            coslist[i] = np.cos(2 * pi * i / q)
+            sinlist[i] = np.sin(2 * pi * i / q)
+        for nx in range(W):
+            for ny in range(W):
+                x = xmin + (nx - halfw) * deltax
+                y = ymin + (ny - halfw) * deltay
+                X = 2 * x * pi / q
+                Y = 2 * y * pi / q
+                h = 0
+                for i in range(1, Q):
+                    xsyc = x * sinlist[i] + y * coslist[i]
+                    sxsyc = np.sin(xsyc)
+                    cxsyc = np.cos(xsyc)
+                    temp = X * coslist[i] - Y * sinlist[i]
+                    h = h + np.exp(sxsyc) * cxsyc * temp + 4 * cxsyc * cxsyc * cxsyc * temp
+                h1 = math.ceil(h * mag)
+                h_set[ny][nx] = h1
+    elif 110 == tp:  # 6 基本模型局部的泰勒级数展开式一
+        for i in range(1, Q):
+            coslist[i] = np.cos(2 * pi * i / q)
+            sinlist[i] = np.sin(2 * pi * i / q)
+        for nx in range(W):
+            for ny in range(W):
+                x = xmin + (nx - halfw) * deltax
+                y = ymin + (ny - halfw) * deltay
+                h = 0
+                for i in range(1, Q):
+                    t = 2 * pi * i / q
+                    t2 = t * t
+                    t4 = t2 * t2
+                    t10 = t2 * t4 * t4
+                    a1 = 1 - t2 / 2 + t4 / 24 - (t2 * t4) / 720 + (t4 * t4) / 40320 - t10 / 3628800\
+                        + (t2 * t10) / 3628800 / 11 / 12 - (t4 * t10) / 3628800 / 11 / 12 / 13 / 14
+                    a2 = t - (t * t2) / 6 + (t * t4) / 120 - (t * t2 * t4) / 5040 + (t * t4 * t4) / 362880 -\
+                        (t * t10) / 3628800 / 11 + (t * t2 * t10) / 3628800 / 11 / 12 / 13 -\
+                        (t * t4 * t10) / 3628800 / 11 / 12 / 13 / 14 / 15
+                    h = h + np.cos(x * a1 + y * a2)
+                h1 = math.ceil(h * mag)
+                h_set[ny][nx] = h1
+    elif 111 == tp:  # 6 基本模型局部的泰勒级数展开式二
+        for i in range(1, Q):
+            coslist[i] = np.cos(2 * pi * i / q)
+            sinlist[i] = np.sin(2 * pi * i / q)
+        for nx in range(W):
+            for ny in range(W):
+                x = xmin + (nx - halfw) * deltax
+                y = ymin + (ny - halfw) * deltay
+                h = 0
+                for i in range(1, Q):
+                    t = 2 * pi * i / q
+                    t2 = t * t
+                    t4 = t2 * t2
+                    t10 = t2 * t4 * t4
+                    a1 = 1 - t2 / 2 + t4 / 24 - (t2 * t4) / 720 + (t4 * t4) / 40320 - t10 / 3628800 \
+                        + (t2 * t10) / 3628800 / 11 / 12
+                    a2 = t - (t * t2) / 6 + (t * t4) / 120 - (t * t2 * t4) / 5040 + (t * t4 * t4) / 362880 - \
+                        (t * t10) / 3628800 / 11 + (t * t2 * t10) / 3628800 / 11 / 12 / 13
+                    h = h + np.cos(x * a1 + y * a2)
+                h1 = math.ceil(h * mag)
+                h_set[ny][nx] = h1
+    elif 112 == tp:  # 6 基本模型局部的泰勒级数展开式三
+        for i in range(1, Q):
+            coslist[i] = np.cos(2 * pi * i / q)
+            sinlist[i] = np.sin(2 * pi * i / q)
+        for nx in range(W):
+            for ny in range(W):
+                x = xmin + (nx - halfw) * deltax
+                y = ymin + (ny - halfw) * deltay
+                h = 0
+                for i in range(1, Q):
+                    t = 2 * pi * i / q
+                    t2 = t * t
+                    t4 = t2 * t2
+                    a1 = 1 - t2 / 2 + t4 / 24 - (t2 * t4) / 720 + (t4 * t4) / 40320
+                    a2 = t - (t * t2) / 6 + (t * t4) / 120 - (t * t2 * t4) / 5040 + (t * t4 * t4) / 362880
+                    h = h + np.cos(x * a1 + y * a2)
+                h1 = math.ceil(h * mag)
+                h_set[ny][nx] = h1
+    elif 113 == tp:  # 6 基本模型局部的泰勒级数展开式四
+        for i in range(1, Q):
+            coslist[i] = np.cos(2 * pi * i / q)
+            sinlist[i] = np.sin(2 * pi * i / q)
+        for nx in range(W):
+            for ny in range(W):
+                x = xmin + (nx - halfw) * deltax
+                y = ymin + (ny - halfw) * deltay
+                h = 0
+                for i in range(1, Q):
+                    t = x * coslist[i] + y * sinlist[i]
+                    t2 = t * t
+                    t4 = t2 * t2
+                    t10 = t2 * t4 * t4
+                    a1 = 1 - t2 / 2 + t4 / 24 - (t2 * t4) / 720 + (t4 * t4) / 40320 - t10 / 3628800\
+                        + (t2 * t10) / 3628800 / 11 / 12 - (t4 * t10) / 3628800 / 11 / 12 / 13 / 14
+                    h = h + a1
+                h1 = math.ceil(h * mag)
+                h_set[ny][nx] = h1
+    elif 114 == tp:  # 6 基本模型泰勒级数展开式的变换一
+        for i in range(1, Q):
+            coslist[i] = np.cos(2 * pi * i / q)
+            sinlist[i] = np.sin(2 * pi * i / q)
+        for nx in range(W):
+            for ny in range(W):
+                x = xmin + (nx - halfw) * deltax
+                y = ymin + (ny - halfw) * deltay
+                h = 0
+                for i in range(1, Q):
+                    t = 2 * pi * i / q
+                    t2 = t * t
+                    t4 = t2 * t2
+                    t10 = t2 * t4 * t4
+                    a1 = 1 - t2 / 2 + t4 / 24 - (t2 * t4) / 720 + (t4 * t4) / 40320 - t10 / 3628800\
+                        + (t2 * t10) / 3628800 / 11 / 12 - (t * t2 * t10) / 3628800 / 11 / 12 / 13 / 14
+                    a2 = t - (t * t2) / 6 + (t * t4) / 120 - (t * t2 * t4) / 5040 + (t * t4 * t4) / 362880 -\
+                        (t * t10) / 3628800 / 11 + (t * t2 * t10) / 3628800 / 11 / 12 / 13 -\
+                        (t4 * t10) / 3628800 / 11 / 12 / 13 / 14 / 15
+                    h = h + np.cos(x * a1 + y * a2)
+                h1 = math.ceil(h * mag)
+                h_set[ny][nx] = h1
+    elif 115 == tp:  # 6 基本模型泰勒级数展开式的变换二
+        for i in range(1, Q):
+            coslist[i] = np.cos(2 * pi * i / q)
+            sinlist[i] = np.sin(2 * pi * i / q)
+        for nx in range(W):
+            for ny in range(W):
+                x = xmin + (nx - halfw) * deltax
+                y = ymin + (ny - halfw) * deltay
+                h = 0
+                for i in range(1, Q):
+                    t = 2 * pi * i / q
+                    t2 = t * t
+                    t4 = t2 * t2
+                    t10 = t2 * t4 * t4
+                    a1 = 1 - t2 / 2 + t4 / 24 - (t2 * t4) / 710 + (t4 * t4) / 40320 - t10 / 3628800\
+                        + (t2 * t10) / 3628800 / 11 / 12 - (t * t2 * t10) / 3628800 / 11 / 12 / 13 / 14
+                    a2 = t - (t * t2) / 6 + (t * t4) / 121 - (t * t2 * t4) / 5040 + (t * t4 * t4) / 362880 -\
+                        (t * t10) / 3628800 / 11 + (t * t2 * t10) / 3628800 / 11 / 12 / 13 -\
+                        (t4 * t10) / 3628800 / 11 / 12 / 13 / 14 / 15
+                    h = h + np.cos(x * a1 + y * a2)
+                h1 = math.ceil(h * mag)
+                h_set[ny][nx] = h1
+    elif 116 == tp:  # 6 局部替换的傅里叶展开形式
+        for i in range(1, Q):
+            coslist[i] = np.cos(2 * pi * i / q)
+            sinlist[i] = np.sin(2 * pi * i / q)
+        for nx in range(W):
+            for ny in range(W):
+                x = xmin + (nx - halfw) * deltax
+                y = ymin + (ny - halfw) * deltay
+                h = 0
+                for i in range(1, Q):
+                    t = i / q
+                    b1 = np.sin(2 * pi * pi) / (2 * pi * pi)
+                    b2 = 2 * np.sin(2 * pi * pi) / pi
+                    pwpi2 = pi * pi
+                    f1 = -4 * pi * np.cos(t) / (4 * pwpi2 - 1) + 4 * pi * np.cos(2 * t) / (4 * pwpi2 - 4) -\
+                        4 * pi * np.cos(3 * t) / (4 * pwpi2 - 9) + 4 * pi * np.cos(4 * t) / (4 * pwpi2 - 16) -\
+                        4 * pi * np.cos(5 * t) / (4 * pwpi2 - 25) + 4 * pi * np.cos(6 * t) / (4 * pwpi2 - 36) -\
+                        4 * pi * np.cos(7 * t) / (4 * pwpi2 - 49)
+                    f2 = -np.sin(t) / (4 * pwpi2 - 1) + 2 * np.sin(2 * t) / (4 * pwpi2 - 4) -\
+                        3 * np.sin(3 * t) / (4 * pwpi2 - 9) + 4 * np.sin(4 * t) / (4 * pwpi2 - 16) -\
+                        5 * np.sin(5 * t) / (4 * pwpi2 - 25) + 4 * np.sin(6 * t) / (4 * pwpi2 - 36) -\
+                        5 * np.sin(7 * t) / (4 * pwpi2 - 49)
+                    h = h + np.cos(x * (b1 + b1 * f1) + y * b2 * f2)
+                h1 = math.ceil(h * mag)
+                h_set[ny][nx] = h1
     return h_set
 
 
