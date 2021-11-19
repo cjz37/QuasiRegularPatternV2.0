@@ -62,5 +62,3 @@ def draw_image_color_set(w, color_set):
     img = np.array(color_set, dtype=np.uint8)
     temp_save(img)
     return img
-
-
