@@ -1062,6 +1062,110 @@ def chapter5_94():  # 函数与变系数的函数变换组合二
               mag=cmp.get_mag(0), tp=103, mtd=0)
 
 
+def chapter6_1():  # 求导变换一
+    chapter_label.config(text='第六章:')
+    part_label.config(text='求导变换1')
+    global qrp
+    qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(6), k_list=cmp.get_k_list(7),
+              mag=cmp.get_mag(0), tp=104, mtd=0)
+
+
+def chapter6_2():  # 求导变换二
+    chapter_label.config(text='第六章:')
+    part_label.config(text='求导变换2')
+    global qrp
+    qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(6), k_list=cmp.get_k_list(7),
+              mag=cmp.get_mag(0), tp=105, mtd=0)
+
+
+def chapter6_3():  # 求导变换三
+    chapter_label.config(text='第六章:')
+    part_label.config(text='求导变换3')
+    global qrp
+    qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(6), k_list=cmp.get_k_list(7),
+              mag=cmp.get_mag(0), tp=106, mtd=0)
+
+
+def chapter6_4():  # 求导变换四
+    chapter_label.config(text='第六章:')
+    part_label.config(text='求导变换4')
+    global qrp
+    qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(6), k_list=cmp.get_k_list(7),
+              mag=cmp.get_mag(0), tp=107, mtd=0)
+
+
+def chapter6_5():  # 求导变换五
+    chapter_label.config(text='第六章:')
+    part_label.config(text='求导变换5')
+    global qrp
+    qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(6), k_list=cmp.get_k_list(7),
+              mag=cmp.get_mag(0), tp=108, mtd=0)
+
+
+def chapter6_6():  # 求导变换六
+    chapter_label.config(text='第六章:')
+    part_label.config(text='求导变换6')
+    global qrp
+    qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(6), k_list=cmp.get_k_list(7),
+              mag=cmp.get_mag(0), tp=109, mtd=0)
+
+
+def chapter6_7():  # 基本模型局部的泰勒级数展开式一
+    chapter_label.config(text='第六章:')
+    part_label.config(text='泰勒展开1')
+    global qrp
+    qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(6), k_list=cmp.get_k_list(7),
+              mag=cmp.get_mag(0), tp=110, mtd=0)
+
+
+def chapter6_8():  # 基本模型局部的泰勒级数展开式二
+    chapter_label.config(text='第六章:')
+    part_label.config(text='泰勒展开2')
+    global qrp
+    qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(6), k_list=cmp.get_k_list(7),
+              mag=cmp.get_mag(0), tp=111, mtd=0)
+
+
+def chapter6_9():  # 基本模型局部的泰勒级数展开式三
+    chapter_label.config(text='第六章:')
+    part_label.config(text='泰勒展开3')
+    global qrp
+    qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(6), k_list=cmp.get_k_list(7),
+              mag=cmp.get_mag(0), tp=112, mtd=0)
+
+
+def chapter6_10():  # 基本模型局部的泰勒级数展开式四
+    chapter_label.config(text='第六章:')
+    part_label.config(text='泰勒展开4')
+    global qrp
+    qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(6), k_list=cmp.get_k_list(7),
+              mag=cmp.get_mag(0), tp=113, mtd=0)
+
+
+def chapter6_11():  # 基本模型泰勒级数展开式的变换一
+    chapter_label.config(text='第六章:')
+    part_label.config(text='泰勒展开变换1')
+    global qrp
+    qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(6), k_list=cmp.get_k_list(7),
+              mag=cmp.get_mag(0), tp=114, mtd=0)
+
+
+def chapter6_12():  # 基本模型泰勒级数展开式的变换二
+    chapter_label.config(text='第六章:')
+    part_label.config(text='泰勒展开变换2')
+    global qrp
+    qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(6), k_list=cmp.get_k_list(7),
+              mag=cmp.get_mag(0), tp=115, mtd=0)
+
+
+def chapter6_13():  # 局部替换的傅里叶展开形式
+    chapter_label.config(text='第六章:')
+    part_label.config(text='傅里叶展开')
+    global qrp
+    qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(6), k_list=cmp.get_k_list(7),
+              mag=cmp.get_mag(0), tp=116, mtd=0)
+
+
 # 菜单栏
 menubar = Menu(root)
 chapter2menu = Menu(menubar, tearoff=False)
@@ -1193,9 +1297,19 @@ chapter5menu.add_command(label="函数与变系数的函数变换组合二", com
 menubar.add_cascade(label="第五章", menu=chapter5menu)
 
 chapter6menu = Menu(menubar, tearoff=False)
-chapter6menu.add_command(label="moudel1", command=callback)  # command=?
-chapter6menu.add_command(label="moudel2", command=callback)
-chapter6menu.add_command(label="moudel...", command=callback)
+chapter6menu.add_command(label="求导变换一", command=chapter6_1)
+chapter6menu.add_command(label="求导变换二", command=chapter6_2)
+chapter6menu.add_command(label="求导变换三", command=chapter6_3)
+chapter6menu.add_command(label="求导变换四", command=chapter6_4)
+chapter6menu.add_command(label="求导变换五", command=chapter6_5)
+chapter6menu.add_command(label="求导变换六", command=chapter6_6)
+chapter6menu.add_command(label="基本模型局部的泰勒级数展开式一", command=chapter6_7)
+chapter6menu.add_command(label="基本模型局部的泰勒级数展开式二", command=chapter6_8)
+chapter6menu.add_command(label="基本模型局部的泰勒级数展开式三", command=chapter6_9)
+chapter6menu.add_command(label="基本模型局部的泰勒级数展开式四", command=chapter6_10)
+chapter6menu.add_command(label="基本模型泰勒级数展开式的变换一", command=chapter6_11)
+chapter6menu.add_command(label="基本模型泰勒级数展开式的变换二", command=chapter6_12)
+chapter6menu.add_command(label="局部替换的傅里叶展开形式", command=chapter6_13)
 menubar.add_cascade(label="第六章", menu=chapter6menu)
 
 root.config(menu=menubar)
