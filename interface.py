@@ -606,6 +606,462 @@ def chapter5_37():  # 基本模型自变量幂函数变换四
               mag=cmp.get_mag(0), tp=46, mtd=0)
 
 
+def chapter5_38():  # 基本模型整体与局部复合的幂函数变换
+    chapter_label.config(text='第五章:')
+    part_label.config(text='复合幂函数变化1')
+    global qrp
+    qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(5), k_list=cmp.get_k_list(6),
+              mag=cmp.get_mag(0), tp=47, mtd=0)
+
+
+def chapter5_39():  # 基本模型整体与自变量复合的幂函数变换
+    chapter_label.config(text='第五章:')
+    part_label.config(text='复合幂函数变化2')
+    global qrp
+    qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(5), k_list=cmp.get_k_list(6),
+              mag=cmp.get_mag(0), tp=48, mtd=0)
+
+
+def chapter5_40():  # 基本模型局部与自变量复合的幂函数变换一
+    chapter_label.config(text='第五章:')
+    part_label.config(text='复合幂函数变化3')
+    global qrp
+    qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(5), k_list=cmp.get_k_list(6),
+              mag=cmp.get_mag(0), tp=49, mtd=0)
+
+
+def chapter5_41():  # 基本模型局部与自变量复合的幂函数变换二
+    chapter_label.config(text='第五章:')
+    part_label.config(text='复合幂函数变化4')
+    global qrp
+    qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(5), k_list=cmp.get_k_list(6),
+              mag=cmp.get_mag(0), tp=50, mtd=0)
+
+
+def chapter5_42():  # 基本模型整体、局部与自变量复合的幂函数变换
+    chapter_label.config(text='第五章:')
+    part_label.config(text='复合幂函数变化5')
+    global qrp
+    qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(5), k_list=cmp.get_k_list(6),
+              mag=cmp.get_mag(0), tp=51, mtd=0)
+
+
+def chapter5_43():  # 基本模型整体指数函数变换一
+    chapter_label.config(text='第五章:')
+    part_label.config(text='整体指数变化1')
+    global qrp
+    qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(5), k_list=cmp.get_k_list(6),
+              mag=cmp.get_mag(0), tp=52, mtd=0)
+
+
+def chapter5_44():  # 基本模型整体指数函数变换二
+    chapter_label.config(text='第五章:')
+    part_label.config(text='整体指数变化2')
+    global qrp
+    qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(5), k_list=cmp.get_k_list(6),
+              mag=cmp.get_mag(0), tp=53, mtd=0)
+
+
+def chapter5_45():  # 基本模型局部指数函数变换一
+    chapter_label.config(text='第五章:')
+    part_label.config(text='局部指数变化1')
+    global qrp
+    qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(5), k_list=cmp.get_k_list(6),
+              mag=cmp.get_mag(0), tp=54, mtd=0)
+
+
+def chapter5_46():  # 基本模型局部指数函数变换二
+    chapter_label.config(text='第五章:')
+    part_label.config(text='局部指数变化2')
+    global qrp
+    qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(5), k_list=cmp.get_k_list(6),
+              mag=cmp.get_mag(0), tp=55, mtd=0)
+
+
+def chapter5_47():  # 基本模型整体与局部指数函数变换一
+    chapter_label.config(text='第五章:')
+    part_label.config(text='复合指数变化1')
+    global qrp
+    qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(5), k_list=cmp.get_k_list(6),
+              mag=cmp.get_mag(0), tp=56, mtd=0)
+
+
+def chapter5_48():  # 基本模型整体与局部指数函数变换二
+    chapter_label.config(text='第五章:')
+    part_label.config(text='复合指数变化2')
+    global qrp
+    qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(5), k_list=cmp.get_k_list(6),
+              mag=cmp.get_mag(0), tp=57, mtd=0)
+
+
+def chapter5_49():  # 基本模型整体对数函数变换一
+    chapter_label.config(text='第五章:')
+    part_label.config(text='整体对数变换1')
+    global qrp
+    qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(5), k_list=cmp.get_k_list(6),
+              mag=cmp.get_mag(0), tp=58, mtd=0)
+
+
+def chapter5_50():  # 基本模型整体对数函数变换二
+    chapter_label.config(text='第五章:')
+    part_label.config(text='整体对数变换2')
+    global qrp
+    qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(5), k_list=cmp.get_k_list(6),
+              mag=cmp.get_mag(0), tp=59, mtd=0)
+
+
+def chapter5_51():  # 基本模型整体对数函数变换三
+    chapter_label.config(text='第五章:')
+    part_label.config(text='整体对数变换3')
+    global qrp
+    qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(5), k_list=cmp.get_k_list(6),
+              mag=cmp.get_mag(0), tp=60, mtd=0)
+
+
+def chapter5_52():  # 基本模型局部对数函数变换
+    chapter_label.config(text='第五章:')
+    part_label.config(text='局部对数变换')
+    global qrp
+    qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(5), k_list=cmp.get_k_list(6),
+              mag=cmp.get_mag(0), tp=61, mtd=0)
+
+
+def chapter5_53():  # 基本模型自变量对数函数变换
+    chapter_label.config(text='第五章:')
+    part_label.config(text='自变量对数变换')
+    global qrp
+    qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(5), k_list=cmp.get_k_list(6),
+              mag=cmp.get_mag(0), tp=62, mtd=0)
+
+
+def chapter5_54():  # 基本模型整体与自变量复合对数函数变换
+    chapter_label.config(text='第五章:')
+    part_label.config(text='复合对数变换1')
+    global qrp
+    qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(5), k_list=cmp.get_k_list(6),
+              mag=cmp.get_mag(0), tp=63, mtd=0)
+
+
+def chapter5_55():  # 基本模型整体与局部复合对数函数变换
+    chapter_label.config(text='第五章:')
+    part_label.config(text='复合对数变换2')
+    global qrp
+    qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(5), k_list=cmp.get_k_list(6),
+              mag=cmp.get_mag(0), tp=64, mtd=0)
+
+
+def chapter5_56():  # 基本模型局部与自变量复合对数函数变换
+    chapter_label.config(text='第五章:')
+    part_label.config(text='复合对数变换3')
+    global qrp
+    qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(5), k_list=cmp.get_k_list(6),
+              mag=cmp.get_mag(0), tp=65, mtd=0)
+
+
+def chapter5_57():  # 基本模型整体、局部与自变量复合对数函数变换
+    chapter_label.config(text='第五章:')
+    part_label.config(text='复合对数变换4')
+    global qrp
+    qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(5), k_list=cmp.get_k_list(6),
+              mag=cmp.get_mag(0), tp=66, mtd=0)
+
+
+def chapter5_58():  # 叠加三角函数变换一
+    chapter_label.config(text='第五章:')
+    part_label.config(text='叠加三角变换1')
+    global qrp
+    qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(6), k_list=cmp.get_k_list(7),
+              mag=cmp.get_mag(0), tp=67, mtd=0)
+
+
+def chapter5_59():  # 叠加三角函数变换二
+    chapter_label.config(text='第五章:')
+    part_label.config(text='叠加三角变换2')
+    global qrp
+    qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(6), k_list=cmp.get_k_list(7),
+              mag=cmp.get_mag(0), tp=68, mtd=0)
+
+
+def chapter5_60():  # 叠加多项式变换一
+    chapter_label.config(text='第五章:')
+    part_label.config(text='叠加多项式变换1')
+    global qrp
+    qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(6), k_list=cmp.get_k_list(7),
+              mag=cmp.get_mag(0), tp=69, mtd=0)
+
+
+def chapter5_61():  # 叠加多项式变换二
+    chapter_label.config(text='第五章:')
+    part_label.config(text='叠加多项式变换2')
+    global qrp
+    qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(6), k_list=cmp.get_k_list(7),
+              mag=cmp.get_mag(0), tp=70, mtd=0)
+
+
+def chapter5_62():  # 叠加幂函数的变换一
+    chapter_label.config(text='第五章:')
+    part_label.config(text='叠加幂函数变换1')
+    global qrp
+    qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(6), k_list=cmp.get_k_list(7),
+              mag=cmp.get_mag(0), tp=71, mtd=0)
+
+
+def chapter5_63():  # 叠加幂函数的变换二
+    chapter_label.config(text='第五章:')
+    part_label.config(text='叠加幂函数变换2')
+    global qrp
+    qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(6), k_list=cmp.get_k_list(7),
+              mag=cmp.get_mag(0), tp=72, mtd=0)
+
+
+def chapter5_64():  # 叠加幂函数的变换三
+    chapter_label.config(text='第五章:')
+    part_label.config(text='叠加幂函数变换3')
+    global qrp
+    qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(6), k_list=cmp.get_k_list(7),
+              mag=cmp.get_mag(0), tp=73, mtd=0)
+
+
+def chapter5_65():  # 叠加幂函数的变换四
+    chapter_label.config(text='第五章:')
+    part_label.config(text='叠加幂函数变换4')
+    global qrp
+    qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(6), k_list=cmp.get_k_list(7),
+              mag=cmp.get_mag(0), tp=74, mtd=0)
+
+
+def chapter5_66():  # 叠加幂函数的变换五
+    chapter_label.config(text='第五章:')
+    part_label.config(text='叠加幂函数变换5')
+    global qrp
+    qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(6), k_list=cmp.get_k_list(7),
+              mag=cmp.get_mag(0), tp=75, mtd=0)
+
+
+def chapter5_67():  # 叠加幂函数的变换六
+    chapter_label.config(text='第五章:')
+    part_label.config(text='叠加幂函数变换6')
+    global qrp
+    qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(6), k_list=cmp.get_k_list(7),
+              mag=cmp.get_mag(0), tp=76, mtd=0)
+
+
+def chapter5_68():  # 叠加指数函数的变换
+    chapter_label.config(text='第五章:')
+    part_label.config(text='叠加指数函数')
+    global qrp
+    qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(6), k_list=cmp.get_k_list(7),
+              mag=cmp.get_mag(0), tp=77, mtd=0)
+
+
+def chapter5_69():  # 叠加对数函数的变换一
+    chapter_label.config(text='第五章:')
+    part_label.config(text='叠加对数函数1')
+    global qrp
+    qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(6), k_list=cmp.get_k_list(7),
+              mag=cmp.get_mag(0), tp=78, mtd=0)
+
+
+def chapter5_70():  # 叠加对数函数的变换二
+    chapter_label.config(text='第五章:')
+    part_label.config(text='叠加对数函数2')
+    global qrp
+    qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(6), k_list=cmp.get_k_list(7),
+              mag=cmp.get_mag(0), tp=79, mtd=0)
+
+
+def chapter5_71():  # 基于绝对值函数变换的叠加幂函数变换一
+    chapter_label.config(text='第五章:')
+    part_label.config(text='基本函数与叠加1')
+    global qrp
+    qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(6), k_list=cmp.get_k_list(7),
+              mag=cmp.get_mag(0), tp=80, mtd=0)
+
+
+def chapter5_72():  # 基于绝对值函数变换的叠加幂函数变换二
+    chapter_label.config(text='第五章:')
+    part_label.config(text='基本函数与叠加2')
+    global qrp
+    qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(6), k_list=cmp.get_k_list(7),
+              mag=cmp.get_mag(0), tp=81, mtd=0)
+
+
+def chapter5_73():  # 基于三角函数变换的叠加幂函数变换一
+    chapter_label.config(text='第五章:')
+    part_label.config(text='基本函数与叠加3')
+    global qrp
+    qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(6), k_list=cmp.get_k_list(7),
+              mag=cmp.get_mag(0), tp=82, mtd=0)
+
+
+def chapter5_74():  # 基于三角函数变换的叠加幂函数变换二
+    chapter_label.config(text='第五章:')
+    part_label.config(text='基本函数与叠加4')
+    global qrp
+    qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(6), k_list=cmp.get_k_list(7),
+              mag=cmp.get_mag(0), tp=83, mtd=0)
+
+
+def chapter5_75():  # 基于三角函数变换的叠加幂函数变换三
+    chapter_label.config(text='第五章:')
+    part_label.config(text='基本函数与叠加5')
+    global qrp
+    qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(6), k_list=cmp.get_k_list(7),
+              mag=cmp.get_mag(0), tp=84, mtd=0)
+
+
+def chapter5_76():  # 基于指数函数变换的叠加幂函数变换一
+    chapter_label.config(text='第五章:')
+    part_label.config(text='基本函数与叠加6')
+    global qrp
+    qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(6), k_list=cmp.get_k_list(7),
+              mag=cmp.get_mag(0), tp=85, mtd=0)
+
+
+def chapter5_77():  # 基于指数函数变换的叠加幂函数变换二
+    chapter_label.config(text='第五章:')
+    part_label.config(text='基本函数与叠加7')
+    global qrp
+    qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(6), k_list=cmp.get_k_list(7),
+              mag=cmp.get_mag(0), tp=86, mtd=0)
+
+
+def chapter5_78():  # 基于对数函数变换的叠加幂函数变换一
+    chapter_label.config(text='第五章:')
+    part_label.config(text='基本函数与叠加8')
+    global qrp
+    qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(6), k_list=cmp.get_k_list(7),
+              mag=cmp.get_mag(0), tp=87, mtd=0)
+
+
+def chapter5_79():  # 基于对数函数变换的叠加幂函数变换二
+    chapter_label.config(text='第五章:')
+    part_label.config(text='基本函数与叠加9')
+    global qrp
+    qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(6), k_list=cmp.get_k_list(7),
+              mag=cmp.get_mag(0), tp=88, mtd=0)
+
+
+def chapter5_80():  # 基于对数函数变换的叠加幂函数变换三
+    chapter_label.config(text='第五章:')
+    part_label.config(text='基本函数叠加10')
+    global qrp
+    qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(6), k_list=cmp.get_k_list(7),
+              mag=cmp.get_mag(0), tp=89, mtd=0)
+
+
+def chapter5_81():  # 基于绝对值函数变换的叠加对数函数变换
+    chapter_label.config(text='第五章:')
+    part_label.config(text='基本函数叠加11')
+    global qrp
+    qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(6), k_list=cmp.get_k_list(7),
+              mag=cmp.get_mag(0), tp=90, mtd=0)
+
+
+def chapter5_82():  # 基于三角函数变换的叠加对数函数变换
+    chapter_label.config(text='第五章:')
+    part_label.config(text='基本函数叠加12')
+    global qrp
+    qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(6), k_list=cmp.get_k_list(7),
+              mag=cmp.get_mag(0), tp=91, mtd=0)
+
+
+def chapter5_83():  # 基于指数函数变换的叠加对数函数变换一
+    chapter_label.config(text='第五章:')
+    part_label.config(text='基本函数叠加13')
+    global qrp
+    qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(6), k_list=cmp.get_k_list(7),
+              mag=cmp.get_mag(0), tp=92, mtd=0)
+
+
+def chapter5_84():  # 基于指数函数变换的叠加对数函数变换二
+    chapter_label.config(text='第五章:')
+    part_label.config(text='基本函数叠加14')
+    global qrp
+    qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(6), k_list=cmp.get_k_list(7),
+              mag=cmp.get_mag(0), tp=93, mtd=0)
+
+
+def chapter5_85():  # 三角函数的连乘变换一
+    chapter_label.config(text='第五章:')
+    part_label.config(text='三角连乘变换1')
+    global qrp
+    qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(6), k_list=cmp.get_k_list(7),
+              mag=cmp.get_mag(0), tp=94, mtd=0)
+
+
+def chapter5_86():  # 三角函数的连乘变换二
+    chapter_label.config(text='第五章:')
+    part_label.config(text='三角连乘变换2')
+    global qrp
+    qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(6), k_list=cmp.get_k_list(7),
+              mag=cmp.get_mag(0), tp=95, mtd=0)
+
+
+def chapter5_87():  # 三角函数的连乘变换三
+    chapter_label.config(text='第五章:')
+    part_label.config(text='三角连乘变换3')
+    global qrp
+    qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(6), k_list=cmp.get_k_list(7),
+              mag=cmp.get_mag(0), tp=96, mtd=0)
+
+
+def chapter5_88():  # 其他形式连乘变换一
+    chapter_label.config(text='第五章:')
+    part_label.config(text='其他连乘变换1')
+    global qrp
+    qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(6), k_list=cmp.get_k_list(7),
+              mag=cmp.get_mag(0), tp=97, mtd=0)
+
+
+def chapter5_89():  # 其他形式连乘变换二
+    chapter_label.config(text='第五章:')
+    part_label.config(text='其他连乘变换2')
+    global qrp
+    qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(6), k_list=cmp.get_k_list(7),
+              mag=cmp.get_mag(0), tp=98, mtd=0)
+
+
+def chapter5_90():  # 其他形式连乘变换三
+    chapter_label.config(text='第五章:')
+    part_label.config(text='其他连乘变换3')
+    global qrp
+    qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(6), k_list=cmp.get_k_list(7),
+              mag=cmp.get_mag(0), tp=99, mtd=0)
+
+
+def chapter5_91():  # 函数之间自由组合的变换方式一
+    chapter_label.config(text='第五章:')
+    part_label.config(text='自由组合1')
+    global qrp
+    qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(6), k_list=cmp.get_k_list(7),
+              mag=cmp.get_mag(0), tp=100, mtd=0)
+
+
+def chapter5_92():  # 函数之间自由组合的变换方式二
+    chapter_label.config(text='第五章:')
+    part_label.config(text='自由组合2')
+    global qrp
+    qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(6), k_list=cmp.get_k_list(7),
+              mag=cmp.get_mag(0), tp=101, mtd=0)
+
+
+def chapter5_93():  # 函数与变系数的函数变换组合一
+    chapter_label.config(text='第五章:')
+    part_label.config(text='自由组合3')
+    global qrp
+    qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(6), k_list=cmp.get_k_list(7),
+              mag=cmp.get_mag(0), tp=103, mtd=0)
+
+
+def chapter5_94():  # 函数与变系数的函数变换组合二
+    chapter_label.config(text='第五章:')
+    part_label.config(text='自由组合4')
+    global qrp
+    qrp = QRP(color_list=cmp.get_color_list(0), split_point=cmp.get_split_point(6), k_list=cmp.get_k_list(7),
+              mag=cmp.get_mag(0), tp=104, mtd=0)
+
+
 # 菜单栏
 menubar = Menu(root)
 chapter2menu = Menu(menubar, tearoff=False)
@@ -676,25 +1132,64 @@ chapter5menu.add_command(label="基本模型自变量幂函数变换一", comman
 chapter5menu.add_command(label="基本模型自变量幂函数变换二", command=chapter5_35)
 chapter5menu.add_command(label="基本模型自变量幂函数变换三", command=chapter5_36)
 chapter5menu.add_command(label="基本模型自变量幂函数变换四", command=chapter5_37)
-chapter5menu.add_command(label="moudel...", command=callback)
-chapter5menu.add_command(label="moudel...", command=callback)
-chapter5menu.add_command(label="moudel...", command=callback)
-chapter5menu.add_command(label="moudel...", command=callback)
-chapter5menu.add_command(label="moudel...", command=callback)
-chapter5menu.add_command(label="moudel...", command=callback)
-chapter5menu.add_command(label="moudel...", command=callback)
-chapter5menu.add_command(label="moudel...", command=callback)
-chapter5menu.add_command(label="moudel...", command=callback)
-chapter5menu.add_command(label="moudel...", command=callback)
-chapter5menu.add_command(label="moudel...", command=callback)
-chapter5menu.add_command(label="moudel...", command=callback)
-chapter5menu.add_command(label="moudel...", command=callback)
-chapter5menu.add_command(label="moudel...", command=callback)
-chapter5menu.add_command(label="moudel...", command=callback)
-chapter5menu.add_command(label="moudel...", command=callback)
-chapter5menu.add_command(label="moudel...", command=callback)
-chapter5menu.add_command(label="moudel...", command=callback)
-chapter5menu.add_command(label="moudel...", command=callback)
+chapter5menu.add_command(label="基本模型整体与局部复合幂函数变换", command=chapter5_38)
+chapter5menu.add_command(label="基本模型整体与自变量复合幂函数变换", command=chapter5_39)
+chapter5menu.add_command(label="基本模型局部与自变量复合幂函数变换一", command=chapter5_40)
+chapter5menu.add_command(label="基本模型局部与自变量复合幂函数变换二", command=chapter5_41)
+chapter5menu.add_command(label="基本模型整体、局部与自变量复合幂函数变换", command=chapter5_42)
+chapter5menu.add_command(label="基本模型整体指数函数变换一", command=chapter5_43)
+chapter5menu.add_command(label="基本模型整体指数函数变换二", command=chapter5_44)
+chapter5menu.add_command(label="基本模型局部指数函数变换一", command=chapter5_45)
+chapter5menu.add_command(label="基本模型局部指数函数变换二", command=chapter5_46)
+chapter5menu.add_command(label="基本模型整体与局部复合指数函数变换一", command=chapter5_47)
+chapter5menu.add_command(label="基本模型整体与局部复合指数函数变换二", command=chapter5_48)
+chapter5menu.add_command(label="基本模型整体对数函数变换一", command=chapter5_49)
+chapter5menu.add_command(label="基本模型整体对数函数变换二", command=chapter5_50)
+chapter5menu.add_command(label="基本模型整体对数函数变换三", command=chapter5_51)
+chapter5menu.add_command(label="基本模型局部对数函数变换", command=chapter5_52)
+chapter5menu.add_command(label="基本模型自变量对数函数变换", command=chapter5_53)
+chapter5menu.add_command(label="基本模型整体与自变量复合对数函数变换", command=chapter5_54)
+chapter5menu.add_command(label="基本模型整体与局部复合对数函数变换", command=chapter5_55)
+chapter5menu.add_command(label="基本模型局部与自变量复合对数函数变换", command=chapter5_56)
+chapter5menu.add_command(label="基本模型整体、局部与自变量复合对数函数变换", command=chapter5_57)
+chapter5menu.add_command(label="叠加三角函数变换一", command=chapter5_58)
+chapter5menu.add_command(label="叠加三角函数变换二", command=chapter5_59)
+chapter5menu.add_command(label="叠加多项式变换一", command=chapter5_60)
+chapter5menu.add_command(label="叠加多项式变换二", command=chapter5_61)
+chapter5menu.add_command(label="叠加幂函数变换一", command=chapter5_62)
+chapter5menu.add_command(label="叠加幂函数变换二", command=chapter5_63)
+chapter5menu.add_command(label="叠加幂函数变换三", command=chapter5_64)
+chapter5menu.add_command(label="叠加幂函数变换四", command=chapter5_65)
+chapter5menu.add_command(label="叠加幂函数变换五", command=chapter5_66)
+chapter5menu.add_command(label="叠加幂函数变换六", command=chapter5_67)
+chapter5menu.add_command(label="叠加指数变换", command=chapter5_68)
+chapter5menu.add_command(label="叠加对数变换一", command=chapter5_69)
+chapter5menu.add_command(label="叠加对数变换二", command=chapter5_70)
+chapter5menu.add_command(label="基于绝对值函数变换的叠加幂函数变换一", command=chapter5_71)
+chapter5menu.add_command(label="基于绝对值函数变换的叠加幂函数变换二", command=chapter5_72)
+chapter5menu.add_command(label="基于三角函数变换的叠加幂函数变换一", command=chapter5_73)
+chapter5menu.add_command(label="基于三角函数变换的叠加幂函数变换二", command=chapter5_74)
+chapter5menu.add_command(label="基于三角函数变换的叠加幂函数变换三", command=chapter5_75)
+chapter5menu.add_command(label="基于指数函数变换的叠加幂函数变换一", command=chapter5_76)
+chapter5menu.add_command(label="基于指数函数变换的叠加幂函数变换二", command=chapter5_77)
+chapter5menu.add_command(label="基于对数函数变换的叠加幂函数变换一", command=chapter5_78)
+chapter5menu.add_command(label="基于对数函数变换的叠加幂函数变换二", command=chapter5_79)
+chapter5menu.add_command(label="基于对数函数变换的叠加幂函数变换三", command=chapter5_80)
+chapter5menu.add_command(label="基于绝对值函数变换的叠加对数函数变换", command=chapter5_81)
+chapter5menu.add_command(label="基于三角函数变换的叠加对数函数变换", command=chapter5_82)
+chapter5menu.add_command(label="基于指数函数变换的叠加对数函数变换一", command=chapter5_83)
+chapter5menu.add_command(label="基于指数函数变换的叠加对数函数变换二", command=chapter5_84)
+chapter5menu.add_command(label="三角函数连乘变换一", command=chapter5_85)
+chapter5menu.add_command(label="三角函数连乘变换二", command=chapter5_86)
+chapter5menu.add_command(label="三角函数连乘变换三", command=chapter5_87)
+chapter5menu.add_command(label="其他形式连乘变换一", command=chapter5_88)
+chapter5menu.add_command(label="其他形式连乘变换二", command=chapter5_89)
+chapter5menu.add_command(label="其他形式连乘变换三", command=chapter5_90)
+chapter5menu.add_command(label="函数之间自由组合的变换方式一", command=chapter5_91)
+chapter5menu.add_command(label="函数之间自由组合的变换方式二", command=chapter5_92)
+chapter5menu.add_command(label="函数与变系数的函数变换组合一", command=chapter5_93)
+chapter5menu.add_command(label="函数与变系数的函数变换组合二", command=chapter5_94)
+
 menubar.add_cascade(label="第五章", menu=chapter5menu)
 
 chapter6menu = Menu(menubar, tearoff=False)
