@@ -1,2 +1,3 @@
 # QuasiRegularPattern
-update to chapter 5
+Update to chapter 6
+The interface and functions are being optimized
